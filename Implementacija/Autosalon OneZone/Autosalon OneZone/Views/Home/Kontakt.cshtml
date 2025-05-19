@@ -1,0 +1,74 @@
+﻿@* Fajl: Views/Home/Kontakt.cshtml *@
+@* Ovaj View sadrži formu za slanje poruke podršci *@
+
+@{
+    ViewData["Title"] = "Kontaktirajte podršku"; // Naslov stranice
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Koristite Layout koji Vam odgovara
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/css/support.css" /> @* Link na CSS za ovaj View *@
+}
+
+<div class="container">
+    <div class="contact-container">
+        <h2>Kontaktirajte našu podršku</h2>
+
+        @* --- Dodano/Provereno: Prikaz TempData poruka (za uspeh/neuspeh slanja poruke) --- *@
+        @* Ako već imate prikaz TempData poruka u Layoutu, ovo ovdje može biti suvišno * @
+         @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @* --------------------------------------------------------------------------------- *@
+
+        <div class="contact-form">
+            @* Forma cilja Support kontroler i SendMessage akciju (POST) *@
+            <form asp-controller="Support" asp-action="SendMessage" method="post">
+                @* --- DODANO: Anti-forgery token za sigurnost --- *@
+                @Html.AntiForgeryToken()
+                @* ------------------------------------------------ *@
+
+                <label for="user-message">Poruka:</label>
+                <textarea id="user-message" name="Message" placeholder="Napišite vašu poruku" required></textarea> @* Polje "Message" ce se bindovati u kontroleru *@
+                <button type="submit" id="send-message">Pošaljite poruku</button>
+            </form>
+        </div>
+        <div class="info-message">
+            <p>Naša podrška će vas kontaktirati putem maila što je prije moguće. Hvala na strpljenju!</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @* jQuery je potreban za skriptu ispod. Uverite se da je jQuery učitan u Layoutu. *@
+    <script>
+        $(document).ready(function() {
+            $("#send-message").click(function(e) {
+                // Jednostavna klijentska validacija: proveri da li je textarea prazna
+                if ($("#user-message").val().trim() === "") {
+                    e.preventDefault(); // Spreči submit forme
+                    alert("Molimo vas unesite poruku."); // Prikazi poruku korisniku
+                }
+            });
+        });
+    </script>
+
+    @* --- DODANO/PROVERENO: Uključi validacione skripte ako forma koristi Data Annotations (nije slučaj za ovu formu samo sa required atributom) --- *@
+    @* Za ovu konkretnu formu samo sa HTML required, _ValidationScriptsPartial nije neophodan, ali ne smeta. *@
+    @* Ako dodas ViewModel sa Data Annotations, onda je OBAVEZNO *@
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @* ---------------------------------------------------------------------------------------------------- *@
+}

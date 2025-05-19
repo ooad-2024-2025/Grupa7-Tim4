@@ -1,0 +1,81 @@
+﻿
+@model IEnumerable<Autosalon_OneZone.Models.Vozilo>
+
+@{
+    ViewData["Title"] = "Lista Vozila"; // Naslov stranice
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@* Proveravamo da li je korisnik administrator pre nego što prikažemo link za dodavanje novog vozila *@
+@if (User.IsInRole("Administrator")) // Proverava da li je trenutni korisnik u roli "Administrator"
+{
+    <p>
+        @* Link ka GET akciji "Create" u "Vozilo" kontroleru *@
+        <a asp-controller="Vozilo" asp-action="Create" class="btn btn-primary">Dodaj Novo Vozilo</a>
+    </p>
+}
+
+
+@* Primer prikaza liste vozila u tabeli *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Godiste</th>
+            <th>Gorivo</th>
+            <th>Kubikaza</th>
+            <th>Boja</th>
+            <th>Kilometraza</th>
+            <th>Cijena</th>
+            <th>Slika</th>
+            <th>Opis</th>
+            @* Dodajte ostale kolone po potrebi *@
+            <th></th> @* Kolona za akcije (Detalji, Izmeni, Obriši) *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vozilo in Model) // Prolazimo kroz listu vozila dobijenu od kontrolera (IEnumerable<Vozilo>)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => vozilo.Marka)</td> @* Prikaz Marka *@
+                <td>@Html.DisplayFor(modelItem => vozilo.Model)</td> @* Prikaz Model *@
+                <td>@Html.DisplayFor(modelItem => vozilo.Godiste)</td> @* Prikaz Godiste *@
+                <td>@Html.DisplayFor(modelItem => vozilo.Gorivo)</td> @* Prikaz Gorivo (enum će se prikazati kao string) *@
+                <td>@Html.DisplayFor(modelItem => vozilo.Kubikaza)</td>
+                <td>@Html.DisplayFor(modelItem => vozilo.Boja)</td>
+                <td>@Html.DisplayFor(modelItem => vozilo.Kilometraza)</td>
+                <td>@Html.DisplayFor(modelItem => vozilo.Cijena)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(vozilo.Slika))
+                    {
+                        <img src="@vozilo.Slika" alt="Slika @vozilo.Marka @vozilo.Model" width="100" /> 
+                    }
+                </td>
+                 <td>@Html.DisplayFor(modelItem => vozilo.Opis)</td>
+
+                <td>
+                    @* Opciono: Linkovi ka drugim akcijama (Detalji, Izmeni, Obriši) *@
+                    @* Ovi linkovi bi takođe trebalo da budu uslovljeni ulogom Administratora ako vode na Edit/Delete *@
+
+                    @* Link za Detalje (verovatno dostupan svima) *@
+                    @* <a asp-controller="Vozilo" asp-action="Details" asp-route-id="@vozilo.VoziloID">Detalji</a> *@
+
+                    @* Linkovi za izmenu i brisanje (samo za Admina) *@
+                    @if (User.IsInRole("Administrator"))
+                    {
+                         @* <a asp-controller="Vozilo" asp-action="Edit" asp-route-id="@vozilo.VoziloID">[Izmeni]</a> | *@
+                         @* <a asp-controller="Vozilo" asp-action="Delete" asp-route-id="@vozilo.VoziloID">[Obriši]</a> *@
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* Sekcija skripti ako je potrebna za ovu stranicu (npr. za sortiranje tabele) *@
+@section Scripts {
+    @* Primer uključivanja validacionih skripti, mada je ovo obično potrebno samo za forme *@
+    @* <partial name="_ValidationScriptsPartial" /> *@
+}

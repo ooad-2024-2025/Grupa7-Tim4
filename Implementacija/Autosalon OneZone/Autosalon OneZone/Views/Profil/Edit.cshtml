@@ -1,0 +1,80 @@
+﻿
+@model Autosalon_OneZone.Models.ViewModels.EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Uredi Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Koristite Layout koji Vam odgovara
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/css/editprofile.css" />
+}
+
+<div class="container">
+    <div class="form-container">
+        <h2>Uredi Profil</h2>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-controller="Profil" asp-action="Edit" method="post"> 
+ 
+
+            <div class="form-group">
+                <label asp-for="Ime"></label> @* <--- Koristi asp-label *@
+                <input asp-for="Ime" type="text" class="form-control" placeholder="Ime" required /> @* <--- Koristi asp-for *@
+                <span asp-validation-for="Ime" class="text-danger"></span> @* Opciono: Prikazuje grešku samo za ovo polje *@
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Prezime"></label>
+                <input asp-for="Prezime" type="text" class="form-control" placeholder="Prezime" required />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email adresa" required />
+                 <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" type="text" class="form-control" placeholder="Korisničko ime" required />
+                 <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            @* --- Opciona polja za promenu lozinke (ako ste ih dodali u EditProfileViewModel) --- *@
+            @* Ako ste dodali OldPassword, NewPassword, ConfirmNewPassword u ViewModel, dodajte polja i ovde: *@
+            @*
+            <div class="form-group">
+                 <label asp-for="OldPassword"></label>
+                 <input asp-for="OldPassword" type="password" class="form-control" />
+                 <span asp-validation-for="OldPassword" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                 <label asp-for="NewPassword"></label>
+                 <input asp-for="NewPassword" type="password" class="form-control" />
+                 <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                 <label asp-for="ConfirmNewPassword"></label>
+                 <input asp-for="ConfirmNewPassword" type="password" class="form-control" />
+                 <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+            </div>
+            *@
+            @* ------------------------------------------------------------------------------------- *@
+
+            <div class="button-group">
+                @* --- PROMENJENO: Link "Nazad na profil" sada cilja Index akciju u Profil kontroleru --- *@
+                <a asp-controller="Profil" asp-action="Index" class="back-button">Nazad na profil</a> @* <--- KORIGOVAN LINK *@
+                
+                <button type="submit" class="save-button">Sačuvaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* --- DODATO: Sekcija za skripte (neophodno za klijentsku validaciju) --- *@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@* ------------------------------------------------------------------------- *@
