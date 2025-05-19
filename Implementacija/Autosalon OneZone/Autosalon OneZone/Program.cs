@@ -4,7 +4,7 @@ using Autosalon_OneZone.Models; // Namespace gde su vaši entiteti (ApplicationU
 using Autosalon_OneZone.Services; // Namespace gde su vaši servisi (IVoziloService, VoziloService, itd.)
 using Microsoft.AspNetCore.Identity; // Potrebno za Identity, UserManager, RoleManager, IdentityRole
 using Microsoft.EntityFrameworkCore; // Potrebno za UseSqlServer
-
+using Autosalon_OneZone.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
