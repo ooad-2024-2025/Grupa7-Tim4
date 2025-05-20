@@ -1,10 +1,25 @@
 ﻿/* Register.css - Stilovi za stranicu registracije */
 
+/* Add header styling */
+header {
+    background-color: #2f2f2f;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin: 0;
+}
+
+    header h1 {
+        font-size: 36px;
+        margin: 0;
+    }
+
 .register-container {
     display: flex;
     justify-content: center;
     padding: 50px 20px;
     background-color: #f4f4f4;
+    margin: 0;
 }
 
 .form-container {

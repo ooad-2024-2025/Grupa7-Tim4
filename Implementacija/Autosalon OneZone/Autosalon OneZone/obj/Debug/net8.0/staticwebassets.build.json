@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2GNvTdt0dE87+ItHnMtmJqIPdA9+2b36Yo9fHL3dJEE=",
+  "Hash": "RnkL1N+pYVTDv/raGRmV5Cjwj3LC3/P3VnEW2EQiaKA=",
   "Source": "Autosalon OneZone",
   "BasePath": "_content/Autosalon OneZone",
   "Mode": "Default",
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gh5le36z11",
-      "Integrity": "BOm3XuyJqpRxfOZXBf+Fd6dwknsZJwYnA5oRfNyf7Hk=",
+      "Fingerprint": "lyn4egjoh7",
+      "Integrity": "TZBFO6jhruAkZli+fHR3zrqz/TOszTZhyU/NaGuXj5g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\editprofile.css"
@@ -1459,8 +1459,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ujpij9d9g1",
-      "Integrity": "2hh8lxDBuZQzgQaAj3q+Fh4wt0rSnMypEOfJifCEn4E=",
+      "Fingerprint": "xa9yfxkjng",
+      "Integrity": "ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\register.css"
@@ -3465,7 +3465,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2202"
+          "Value": "3188"
         },
         {
           "Name": "Content-Type",
@@ -3473,11 +3473,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BOm3XuyJqpRxfOZXBf+Fd6dwknsZJwYnA5oRfNyf7Hk=\""
+          "Value": "\"TZBFO6jhruAkZli+fHR3zrqz/TOszTZhyU/NaGuXj5g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 17 May 2025 19:53:39 GMT"
+          "Value": "Tue, 20 May 2025 22:51:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3487,12 +3487,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BOm3XuyJqpRxfOZXBf+Fd6dwknsZJwYnA5oRfNyf7Hk="
+          "Value": "sha256-TZBFO6jhruAkZli+fHR3zrqz/TOszTZhyU/NaGuXj5g="
         }
       ]
     },
     {
-      "Route": "css/editprofile.gh5le36z11.css",
+      "Route": "css/editprofile.lyn4egjoh7.css",
       "AssetFile": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\editprofile.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3502,7 +3502,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2202"
+          "Value": "3188"
         },
         {
           "Name": "Content-Type",
@@ -3510,11 +3510,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BOm3XuyJqpRxfOZXBf+Fd6dwknsZJwYnA5oRfNyf7Hk=\""
+          "Value": "\"TZBFO6jhruAkZli+fHR3zrqz/TOszTZhyU/NaGuXj5g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 17 May 2025 19:53:39 GMT"
+          "Value": "Tue, 20 May 2025 22:51:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3524,7 +3524,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "gh5le36z11"
+          "Value": "lyn4egjoh7"
         },
         {
           "Name": "label",
@@ -3532,7 +3532,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BOm3XuyJqpRxfOZXBf+Fd6dwknsZJwYnA5oRfNyf7Hk="
+          "Value": "sha256-TZBFO6jhruAkZli+fHR3zrqz/TOszTZhyU/NaGuXj5g="
         }
       ]
     },
@@ -3559,7 +3559,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 11:18:11 GMT"
+          "Value": "Tue, 20 May 2025 22:42:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3596,7 +3596,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 11:18:11 GMT"
+          "Value": "Tue, 20 May 2025 22:42:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3793,7 +3793,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1730"
+          "Value": "1973"
         },
         {
           "Name": "Content-Type",
@@ -3801,11 +3801,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2hh8lxDBuZQzgQaAj3q+Fh4wt0rSnMypEOfJifCEn4E=\""
+          "Value": "\"ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 17 May 2025 16:46:55 GMT"
+          "Value": "Tue, 20 May 2025 22:55:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3815,12 +3815,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2hh8lxDBuZQzgQaAj3q+Fh4wt0rSnMypEOfJifCEn4E="
+          "Value": "sha256-ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA="
         }
       ]
     },
     {
-      "Route": "css/register.ujpij9d9g1.css",
+      "Route": "css/register.xa9yfxkjng.css",
       "AssetFile": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\register.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3830,7 +3830,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1730"
+          "Value": "1973"
         },
         {
           "Name": "Content-Type",
@@ -3838,11 +3838,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2hh8lxDBuZQzgQaAj3q+Fh4wt0rSnMypEOfJifCEn4E=\""
+          "Value": "\"ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 17 May 2025 16:46:55 GMT"
+          "Value": "Tue, 20 May 2025 22:55:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3852,7 +3852,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ujpij9d9g1"
+          "Value": "xa9yfxkjng"
         },
         {
           "Name": "label",
@@ -3860,7 +3860,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-2hh8lxDBuZQzgQaAj3q+Fh4wt0rSnMypEOfJifCEn4E="
+          "Value": "sha256-ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA="
         }
       ]
     },

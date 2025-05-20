@@ -1,93 +1,64 @@
-﻿
-@model Autosalon_OneZone.Models.ViewModels.RegisterViewModel
-
+﻿@model Autosalon_OneZone.Models.ViewModels.RegisterViewModel
 @{
-    ViewData["Title"] = "Registracija"; // Naslov stranice
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Koristimo Vas Layout
+    ViewData["Title"] = "Registracija";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 @section Head {
-    @* Linkujemo CSS fajl specifičan za ovu stranicu *@
-    <link rel="stylesheet" href="~/css/register.css" />
-    @* NAPOMENA: Proverite da li Vas _Layout.cshtml vec linkuje globalni kod.css.
-                 Ako linkuje, stilovi iz register.css ce se ucitati posle kod.css i imati prednost. *@
+    <link rel="stylesheet" href="~/css/register.css" />
 }
 
-@* NAPOMENA: Header i Footer ako su zajednicki idu u Layout. Ako treba samo ovde, dodajte ih. *@
+<header>
+    <h1>Registracija</h1>
+</header>
 
-@* Glavni kontejner za formu - koristi klasu register-container iz register.css *@
 <div class="register-container">
-    @* Kontejner oko forme (beli boks) - koristi klasu form-container iz register.css *@
-    <div class="form-container">
-        @* Wrapper za sadrzaj forme - koristi klasu form-content iz register.css *@
-        <div class="form-content">
-            <h2>Registracija</h2> @* Naslov forme *@
+    <div class="form-container">
+        <div class="form-content">
+            <h2>Kreirajte Nalog</h2>
 
-            @* --- DODATO: Prikazuje sažetak svih grešaka validacije i greške iz UserManagera --- *@
-            @* Greške će se prikazati ovde ako ModelState sadrzi greške, stilizovane klasom .text-danger *@
             <div asp-validation-summary="All" class="text-danger"></div>
-            @* ---------------------------------------------------------------------------------- *@
 
-            @* Forma za registraciju - koristi ASP.NET Core Tag Helpere *@
             <form asp-controller="Account" asp-action="Register" method="post">
-
-                
-
                 <div class="form-group">
-                    @* <label asp-for="Ime" class="control-label"></label> -- Labela je opcionalna, ali dobra praksa za pristupačnost -- *@
-                    <input asp-for="Ime" type="text" class="form-control" placeholder="Ime" required />
-                    <span asp-validation-for="Ime" class="text-danger"></span> @* Opciono: prikazuje gresku samo za ovo polje *@
+                    <input asp-for="Ime" type="text" class="form-control" placeholder="Ime" required />
+                    <span asp-validation-for="Ime" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                    @* <label asp-for="Prezime" class="control-label"></label> *@
-                    <input asp-for="Prezime" type="text" class="form-control" placeholder="Prezime" required />
+                <div class="form-group">
+                    <input asp-for="Prezime" type="text" class="form-control" placeholder="Prezime" required />
                     <span asp-validation-for="Prezime" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                    @* <label asp-for="Email" class="control-label"></label> *@
-                    <input asp-for="Email" type="email" class="form-control" placeholder="Email adresa" required />
-                     <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="form-group">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email adresa" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
-                 @* Ako koristite UserName polje u modelu i zelite da se ono prikaze: *@
-                @* <div class="form-group">
-                     <label asp-for="UserName" class="control-label"></label>
-                     <input asp-for="UserName" type="text" class="form-control" placeholder="Korisničko ime" required />
-                     <span asp-validation-for="UserName" class="text-danger"></span>
-                 </div>
-                *@
-
-
-                <div class="form-group">
-                     @* <label asp-for="Password" class="control-label"></label> *@
-                    <input asp-for="Password" type="password" class="form-control" placeholder="Šifra" required />
-                     <span asp-validation-for="Password" class="text-danger"></span>
+                <div class="form-group">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Šifra" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                     @* <label asp-for="ConfirmPassword" class="control-label"></label> *@
-                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Potvrdite šifru" required />
-                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <div class="form-group">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Potvrdite šifru" required />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                    @* Dugme za slanje forme - koristi klasu register-button iz register.css *@
-                    <button type="submit" class="register-button">Registruj se</button>
-                </div>
+                <div class="form-group">
+                    <button type="submit" class="register-button">Registruj se</button>
+                </div>
 
-                <div class="login-link"> @* Klasa za link - stilizovana u register.css *@
-                    Već imate nalog? <a href="/Account/Login">Prijavite se</a>
-                </div>
-            </form>
-        </div>
-    </div>
+                <div class="login-link">
+                    Već imate nalog? <a href="/Account/Login">Prijavite se</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
-@* Sekcija za skripte, uključujući validacione skripte *@
-@* --- DODATO: Neophodno za klijentsku validaciju --- *@
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-@* --------------------------------------------------- *@
