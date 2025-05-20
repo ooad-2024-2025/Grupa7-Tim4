@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin-specific.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"9623"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 13:58:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"9623"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 00:57:02 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/admin-specific.fidelhq5k8.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin-specific.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"fidelhq5k8"},{"Name":"integrity","Value":"sha256-GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes="},{"Name":"label","Value":"_content/Autosalon OneZone/css/admin-specific.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9623"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 13:58:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9623"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GctzRdPC3\u002B6CEhixe8O\u002BMKvdbUlPNKIUinS3zlYuzes=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 00:57:02 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/cart.1yh1g18qbr.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\cart.css'))</AssetFile>
