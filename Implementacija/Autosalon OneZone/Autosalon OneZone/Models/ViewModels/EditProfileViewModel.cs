@@ -33,7 +33,5 @@ namespace Autosalon_OneZone.Models.ViewModels
         [Display(Name = "Korisničko ime")]
         public string UserName { get; set; }
 
-        // --- UKLONJENA SU OPCIONA POLJA ZA PROMENU LOZINKE (OldPassword, NewPassword, ConfirmNewPassword) ---
-        // Ako želite funkcionalnost promene lozinke, implementirajte je na zasebnoj stranici sa drugim ViewModelom
     }
 }

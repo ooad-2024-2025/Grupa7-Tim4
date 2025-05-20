@@ -32,6 +32,50 @@ namespace Autosalon_OneZone.Controllers
         // *** AKO KORISTITE DbContext za dohvatanje drugih podataka (npr. recenzija), DODAJTE READONLY POLJE: ***
         // private readonly ApplicationDbContext _context; // Primer
         // ***************************************************************************************************
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new
+                {
+                    errors = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    )
+                });
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound("Korisnik nije pronađen.");
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return BadRequest(new
+                {
+                    errors = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    )
+                });
+            }
+
+            await _signInManager.RefreshSignInAsync(user);
+            _logger?.LogInformation("User changed their password successfully.");
+
+            return Ok(new { message = "Lozinka uspješno promijenjena." });
+        }
 
 
         // Konstruktor za injektovanje potrebnih servisa
@@ -205,7 +249,7 @@ namespace Autosalon_OneZone.Controllers
             // *** LOGIKA ZA AŽURIRANJE EMAILA - SLOŽENIJE, ČESTO ZAHTEVA POTVRDU EMAILA ***
             // Ako menjate email, obično šaljete token na novi email i tražite korisniku da ga potvrdi.
             // Primer (nekompletan, zahteva implementaciju email servisa i procesa potvrde):
-            
+
             if (model.Email != user.Email)
             {
                 var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
@@ -213,16 +257,16 @@ namespace Autosalon_OneZone.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "Greška pri postavljanju novog Emaila.");
                     // Dodajte sve greške iz setEmailResult.Errors u ModelState
-                     foreach (var error in setEmailResult.Errors)
-                     {
+                    foreach (var error in setEmailResult.Errors)
+                    {
                         ModelState.AddModelError(string.Empty, error.Description);
-                     }
+                    }
                     return View(model); // Vrati View sa greškom
                 }
                 // Ovdje bi trebalo generisati token za potvrdu emaila i poslati email korisniku
                 profileChanged = true; // Smatramo promenu emaila kao promenu profila
             }
-            
+
 
             // *** LOGIKA ZA AŽURIRANJE KORISNIČKOG IMENA - PAZITI NA JEDINSTVENOST ***
             // Ako dozvoljavate izmenu Korisničkog imena, mora biti jedinstveno.
