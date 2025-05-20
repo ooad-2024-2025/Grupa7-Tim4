@@ -1,4 +1,4 @@
-﻿@* Autosalon OneZone/Views/Home/Kontakt.cshtml - updated version *@
+﻿@* Views/Home/Kontakt.cshtml - improved validation *@
 @model Autosalon_OneZone.ViewModels.KontaktViewModel
 
 @{
@@ -47,6 +47,15 @@
             margin-top: -10px;
             margin-bottom: 10px;
         }
+
+        .field-validation-error {
+            color: #dc3545;
+            font-size: 0.875em;
+        }
+
+        .input-validation-error {
+            border-color: #dc3545;
+        }
     </style>
 }
 
@@ -61,6 +70,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
+
         @if (TempData["ErrorMessage"] != null)
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -72,22 +82,22 @@
         <div class="contact-form">
             @if (User.Identity.IsAuthenticated)
             {
-                <form asp-controller="Home" asp-action="Kontakt" method="post">
+                <form asp-controller="Home" asp-action="Kontakt" method="post" id="contact-form">
                     @Html.AntiForgeryToken()
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="Naslov">Naslov:</label>
                         <input asp-for="Naslov" class="form-control" placeholder="Unesite naslov" />
-                        <span asp-validation-for="Naslov" class="validation-message"></span>
+                        <span asp-validation-for="Naslov" class="field-validation-error"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="Sadrzaj">Poruka:</label>
                         <textarea asp-for="Sadrzaj" class="form-control" rows="5" placeholder="Napišite vašu poruku"></textarea>
-                        <span asp-validation-for="Sadrzaj" class="validation-message"></span>
+                        <span asp-validation-for="Sadrzaj" class="field-validation-error"></span>
                     </div>
 
-                    <button type="submit" id="send-message">Pošaljite poruku</button>
+                    <button type="submit" id="send-message" class="btn btn-primary">Pošaljite poruku</button>
                 </form>
             }
             else
@@ -101,17 +111,19 @@
                 </div>
 
                 <form id="email-form" style="display:none">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="email-subject">Naslov:</label>
                         <input type="text" id="email-subject" class="form-control" placeholder="Unesite naslov" />
+                        <div class="field-validation-error" id="email-subject-error"></div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="email-body">Poruka:</label>
                         <textarea id="email-body" class="form-control" rows="5" placeholder="Napišite vašu poruku"></textarea>
+                        <div class="field-validation-error" id="email-body-error"></div>
                     </div>
 
-                    <button type="button" id="open-email-client">Otvorite email klijent</button>
+                    <button type="button" id="open-email-client" class="btn btn-primary">Otvorite email klijent</button>
                     <button type="button" id="cancel-email" class="btn btn-secondary">Odustani</button>
                 </form>
             }
@@ -124,16 +136,14 @@
 </div>
 
 @section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
     <script>
         $(document).ready(function() {
-            // For authenticated users - form validation
-            $("#send-message").click(function(e) {
-                if (!validateForm()) {
-                    e.preventDefault();
-                }
-            });
+            // For authenticated users - client-side validation is handled by jQuery Validate
 
-            // For unauthenticated users - email link
+            // For unauthenticated users - email form
             $("#email-link").click(function() {
                 $("#email-form").show();
                 $(this).hide();
@@ -142,39 +152,37 @@
             $("#cancel-email").click(function() {
                 $("#email-form").hide();
                 $("#email-link").show();
+                $("#email-subject-error").text("");
+                $("#email-body-error").text("");
             });
 
             $("#open-email-client").click(function() {
-                var subject = encodeURIComponent($("#email-subject").val() || "Upit za AutoZone");
-                var body = encodeURIComponent($("#email-body").val() || "");
+                let isValid = true;
+
+                // Validate email subject
+                if ($("#email-subject").val().trim() === "") {
+                    $("#email-subject-error").text("Naslov je obavezan");
+                    isValid = false;
+                } else {
+                    $("#email-subject-error").text("");
+                }
+
+                // Validate email body
+                if ($("#email-body").val().trim() === "") {
+                    $("#email-body-error").text("Poruka je obavezna");
+                    isValid = false;
+                } else {
+                    $("#email-body-error").text("");
+                }
+
+                if (!isValid) {
+                    return;
+                }
+
+                var subject = encodeURIComponent($("#email-subject").val());
+                var body = encodeURIComponent($("#email-body").val());
                 window.location.href = "mailto:autosalon@autosalon.com?subject=" + subject + "&body=" + body;
             });
-
-            function validateForm() {
-                var isValid = true;
-
-                // Check title
-                if ($("#Naslov").val().trim() === "") {
-                    $("[asp-validation-for='Naslov']").text("Naslov je obavezan.");
-                    isValid = false;
-                } else {
-                    $("[asp-validation-for='Naslov']").text("");
-                }
-
-                // Check message
-                if ($("#Sadrzaj").val().trim() === "") {
-                    $("[asp-validation-for='Sadrzaj']").text("Sadržaj poruke je obavezan.");
-                    isValid = false;
-                } else {
-                    $("[asp-validation-for='Sadrzaj']").text("");
-                }
-
-                return isValid;
-            }
         });
     </script>
-
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
 }
