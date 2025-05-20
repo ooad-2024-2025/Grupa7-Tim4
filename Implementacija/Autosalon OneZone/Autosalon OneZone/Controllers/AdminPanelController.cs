@@ -382,8 +382,103 @@ namespace Autosalon_OneZone.Controllers
             return PartialView("_AdminPodrska", viewModel); // <<< PROSLEDITE ViewModel instancu
         }
 
-        // Ovdje treba dodati akciju GetPodrskaJson ako koristite AJAX/JSON za listu podrške
-        // public async Task<JsonResult> GetPodrskaJson(string? searchQuery = null) { ... }
+        // Add this method to the AdminPanelController.cs file in the Podrška sekcija region
+        [HttpGet]
+        public async Task<JsonResult> GetPodrskaJson(string? searchQuery = null, int page = 1)
+        {
+            int pageSize = 10; // Define page size
+
+            var query = _context.PodrskaUpiti
+                .Include(p => p.Korisnik) // Include related user data
+                .AsQueryable();
+
+            // Apply search filter
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query = query.Where(p =>
+                    (p.Naslov != null && p.Naslov.Contains(searchQuery)) ||
+                    (p.Sadrzaj != null && p.Sadrzaj.Contains(searchQuery)) ||
+                    (p.Korisnik != null && p.Korisnik.Email.Contains(searchQuery))
+                );
+            }
+
+            // Apply sorting - newest first
+            query = query.OrderByDescending(p => p.DatumUpita);
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
+
+            // Apply pagination
+            var upiti = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            // Map to JSON-friendly objects
+            var jsonUpiti = upiti.Select(upit => new
+            {
+                upitID = upit.UpitID,
+                datumUpita = upit.DatumUpita,
+                korisnikId = upit.KorisnikId,
+                korisnikEmail = upit.Korisnik?.Email ?? "N/A",
+                korisnikIme = $"{upit.Korisnik?.Ime ?? ""} {upit.Korisnik?.Prezime ?? ""}".Trim(),
+                naslov = upit.Naslov,
+                sadrzaj = upit.Sadrzaj,
+                status = upit.Status.ToString()
+            }).ToList();
+
+            // Return data and pagination info
+            return Json(new
+            {
+                upiti = jsonUpiti,
+                totalCount = totalCount,
+                totalPages = totalPages,
+                currentPage = page,
+                pageSize = pageSize
+            });
+        }
+
+        // Add this method to handle deletion of support requests
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletePodrska(int id)
+        {
+            var upit = await _context.PodrskaUpiti.FindAsync(id);
+            if (upit == null)
+            {
+                return NotFound();
+            }
+
+            _context.PodrskaUpiti.Remove(upit);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { successMessage = "Upit za podršku uspješno obrisan." });
+        }
+
+        // Add this method to handle changing the status of support requests
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePodrskaStatus(int id, string status)
+        {
+            var upit = await _context.PodrskaUpiti.FindAsync(id);
+            if (upit == null)
+            {
+                return NotFound();
+            }
+
+            // Try to parse the status string to the StatusUpita enum
+            if (Enum.TryParse<StatusUpita>(status, out var statusEnum))
+            {
+                upit.Status = statusEnum;
+                await _context.SaveChangesAsync();
+                return Ok(new { successMessage = "Status upita uspješno promijenjen." });
+            }
+            else
+            {
+                return BadRequest("Nevažeći status.");
+            }
+        }
 
         #endregion
 

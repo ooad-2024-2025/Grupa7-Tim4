@@ -1,22 +1,60 @@
-﻿@* Fajl: Views/Home/Kontakt.cshtml *@
-@* Ovaj View sadrži formu za slanje poruke podršci *@
+﻿@* Autosalon OneZone/Views/Home/Kontakt.cshtml - updated version *@
+@model Autosalon_OneZone.ViewModels.KontaktViewModel
 
 @{
-    ViewData["Title"] = "Kontaktirajte podršku"; // Naslov stranice
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Koristite Layout koji Vam odgovara
+    ViewData["Title"] = "Kontaktirajte podršku";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section Head {
-    <link rel="stylesheet" href="~/css/support.css" /> @* Link na CSS za ovaj View *@
+    <link rel="stylesheet" href="~/css/support.css" />
+    <style>
+        .contact-form {
+            margin-bottom: 20px;
+        }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .contact-form label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .contact-form button {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                .contact-form button:hover {
+                    background-color: #0069d9;
+                }
+
+        .validation-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
 }
 
 <div class="container">
     <div class="contact-container">
         <h2>Kontaktirajte našu podršku</h2>
 
-        @* --- Dodano/Provereno: Prikaz TempData poruka (za uspeh/neuspeh slanja poruke) --- *@
-        @* Ako već imate prikaz TempData poruka u Layoutu, ovo ovdje može biti suvišno * @
-         @if (TempData["SuccessMessage"] != null)
+        @if (TempData["SuccessMessage"] != null)
         {
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 @TempData["SuccessMessage"]
@@ -27,48 +65,116 @@
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 @TempData["ErrorMessage"]
-                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
-        @* --------------------------------------------------------------------------------- *@
 
         <div class="contact-form">
-            @* Forma cilja Support kontroler i SendMessage akciju (POST) *@
-            <form asp-controller="Support" asp-action="SendMessage" method="post">
-                @* --- DODANO: Anti-forgery token za sigurnost --- *@
-                @Html.AntiForgeryToken()
-                @* ------------------------------------------------ *@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form asp-controller="Home" asp-action="Kontakt" method="post">
+                    @Html.AntiForgeryToken()
 
-                <label for="user-message">Poruka:</label>
-                <textarea id="user-message" name="Message" placeholder="Napišite vašu poruku" required></textarea> @* Polje "Message" ce se bindovati u kontroleru *@
-                <button type="submit" id="send-message">Pošaljite poruku</button>
-            </form>
+                    <div class="form-group">
+                        <label asp-for="Naslov">Naslov:</label>
+                        <input asp-for="Naslov" class="form-control" placeholder="Unesite naslov" />
+                        <span asp-validation-for="Naslov" class="validation-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Sadrzaj">Poruka:</label>
+                        <textarea asp-for="Sadrzaj" class="form-control" rows="5" placeholder="Napišite vašu poruku"></textarea>
+                        <span asp-validation-for="Sadrzaj" class="validation-message"></span>
+                    </div>
+
+                    <button type="submit" id="send-message">Pošaljite poruku</button>
+                </form>
+            }
+            else
+            {
+                <div class="info-message">
+                    <p>
+                        Za slanje poruke direktno preko sajta, potrebno je da budete prijavljeni.
+                        Možete se <a href="/Account/Login">prijaviti ovdje</a> ili koristiti
+                        <button id="email-link" class="btn btn-link p-0">direktan email kontakt</button>.
+                    </p>
+                </div>
+
+                <form id="email-form" style="display:none">
+                    <div class="form-group">
+                        <label for="email-subject">Naslov:</label>
+                        <input type="text" id="email-subject" class="form-control" placeholder="Unesite naslov" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-body">Poruka:</label>
+                        <textarea id="email-body" class="form-control" rows="5" placeholder="Napišite vašu poruku"></textarea>
+                    </div>
+
+                    <button type="button" id="open-email-client">Otvorite email klijent</button>
+                    <button type="button" id="cancel-email" class="btn btn-secondary">Odustani</button>
+                </form>
+            }
         </div>
+
         <div class="info-message">
-            <p>Naša podrška će vas kontaktirati putem maila što je prije moguće. Hvala na strpljenju!</p>
+            <p>Naša podrška će vas kontaktirati što je prije moguće. Hvala na strpljenju!</p>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    @* jQuery je potreban za skriptu ispod. Uverite se da je jQuery učitan u Layoutu. *@
     <script>
         $(document).ready(function() {
+            // For authenticated users - form validation
             $("#send-message").click(function(e) {
-                // Jednostavna klijentska validacija: proveri da li je textarea prazna
-                if ($("#user-message").val().trim() === "") {
-                    e.preventDefault(); // Spreči submit forme
-                    alert("Molimo vas unesite poruku."); // Prikazi poruku korisniku
+                if (!validateForm()) {
+                    e.preventDefault();
                 }
             });
+
+            // For unauthenticated users - email link
+            $("#email-link").click(function() {
+                $("#email-form").show();
+                $(this).hide();
+            });
+
+            $("#cancel-email").click(function() {
+                $("#email-form").hide();
+                $("#email-link").show();
+            });
+
+            $("#open-email-client").click(function() {
+                var subject = encodeURIComponent($("#email-subject").val() || "Upit za AutoZone");
+                var body = encodeURIComponent($("#email-body").val() || "");
+                window.location.href = "mailto:autosalon@autosalon.com?subject=" + subject + "&body=" + body;
+            });
+
+            function validateForm() {
+                var isValid = true;
+
+                // Check title
+                if ($("#Naslov").val().trim() === "") {
+                    $("[asp-validation-for='Naslov']").text("Naslov je obavezan.");
+                    isValid = false;
+                } else {
+                    $("[asp-validation-for='Naslov']").text("");
+                }
+
+                // Check message
+                if ($("#Sadrzaj").val().trim() === "") {
+                    $("[asp-validation-for='Sadrzaj']").text("Sadržaj poruke je obavezan.");
+                    isValid = false;
+                } else {
+                    $("[asp-validation-for='Sadrzaj']").text("");
+                }
+
+                return isValid;
+            }
         });
     </script>
 
-    @* --- DODANO/PROVERENO: Uključi validacione skripte ako forma koristi Data Annotations (nije slučaj za ovu formu samo sa required atributom) --- *@
-    @* Za ovu konkretnu formu samo sa HTML required, _ValidationScriptsPartial nije neophodan, ali ne smeta. *@
-    @* Ako dodas ViewModel sa Data Annotations, onda je OBAVEZNO *@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    @* ---------------------------------------------------------------------------------------------------- *@
 }
