@@ -39,26 +39,26 @@
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/editprofile.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\editprofile.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-BOm3XuyJqpRxfOZXBf\u002BFd6dwknsZJwYnA5oRfNyf7Hk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2202"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022BOm3XuyJqpRxfOZXBf\u002BFd6dwknsZJwYnA5oRfNyf7Hk=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 19:53:39 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TZBFO6jhruAkZli\u002BfHR3zrqz/TOszTZhyU/NaGuXj5g="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3188"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TZBFO6jhruAkZli\u002BfHR3zrqz/TOszTZhyU/NaGuXj5g=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:51:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/editprofile.gh5le36z11.css">
+    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/editprofile.lyn4egjoh7.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\editprofile.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gh5le36z11"},{"Name":"integrity","Value":"sha256-BOm3XuyJqpRxfOZXBf\u002BFd6dwknsZJwYnA5oRfNyf7Hk="},{"Name":"label","Value":"_content/Autosalon OneZone/css/editprofile.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2202"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022BOm3XuyJqpRxfOZXBf\u002BFd6dwknsZJwYnA5oRfNyf7Hk=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 19:53:39 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"lyn4egjoh7"},{"Name":"integrity","Value":"sha256-TZBFO6jhruAkZli\u002BfHR3zrqz/TOszTZhyU/NaGuXj5g="},{"Name":"label","Value":"_content/Autosalon OneZone/css/editprofile.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3188"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TZBFO6jhruAkZli\u002BfHR3zrqz/TOszTZhyU/NaGuXj5g=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:51:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/kod.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\kod.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-6CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"10694"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00226CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 11:18:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"10694"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00226CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:42:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/kod.w2ro3nmtcz.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\kod.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"w2ro3nmtcz"},{"Name":"integrity","Value":"sha256-6CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ="},{"Name":"label","Value":"_content/Autosalon OneZone/css/kod.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"10694"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00226CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 11:18:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"10694"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00226CH81HCdWjPPRtO/qiCI6rs4IG5QMnRNJO9Zpqe6UNQ=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:42:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/login.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))</AssetFile>
@@ -87,14 +87,14 @@
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/register.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\register.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2hh8lxDBuZQzgQaAj3q\u002BFh4wt0rSnMypEOfJifCEn4E="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1730"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222hh8lxDBuZQzgQaAj3q\u002BFh4wt0rSnMypEOfJifCEn4E=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 16:46:55 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1973"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:55:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/register.ujpij9d9g1.css">
+    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/register.xa9yfxkjng.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\register.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ujpij9d9g1"},{"Name":"integrity","Value":"sha256-2hh8lxDBuZQzgQaAj3q\u002BFh4wt0rSnMypEOfJifCEn4E="},{"Name":"label","Value":"_content/Autosalon OneZone/css/register.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1730"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222hh8lxDBuZQzgQaAj3q\u002BFh4wt0rSnMypEOfJifCEn4E=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 16:46:55 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xa9yfxkjng"},{"Name":"integrity","Value":"sha256-ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA="},{"Name":"label","Value":"_content/Autosalon OneZone/css/register.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1973"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZwmF0hl20rmaLZHpA7d048z8Ecj0MvjoD30MGJO3sHA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:55:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>

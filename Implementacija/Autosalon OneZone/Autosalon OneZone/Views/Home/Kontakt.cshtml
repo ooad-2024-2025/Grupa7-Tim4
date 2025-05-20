@@ -1,6 +1,6 @@
 ﻿@* Views/Home/Kontakt.cshtml - improved validation *@
 @model Autosalon_OneZone.ViewModels.KontaktViewModel
-
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 @{
     ViewData["Title"] = "Kontaktirajte podršku";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -106,7 +106,8 @@
                     <p>
                         Za slanje poruke direktno preko sajta, potrebno je da budete prijavljeni.
                         Možete se <a href="/Account/Login">prijaviti ovdje</a> ili koristiti
-                        <button id="email-link" class="btn btn-link p-0">direktan email kontakt</button>.
+                        <button id="email-link" type="button" class="btn btn-primary" style="text-decoration: none;">Direktan email kontakt</button>
+
                     </p>
                 </div>
 
