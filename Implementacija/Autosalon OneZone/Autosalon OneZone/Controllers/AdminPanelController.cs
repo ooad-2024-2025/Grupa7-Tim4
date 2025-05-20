@@ -386,7 +386,7 @@ namespace Autosalon_OneZone.Controllers
         [HttpGet]
         public async Task<JsonResult> GetPodrskaJson(string? searchQuery = null, int page = 1)
         {
-            int pageSize = 10; // Define page size
+            int pageSize = int.MaxValue;
 
             var query = _context.PodrskaUpiti
                 .Include(p => p.Korisnik) // Include related user data
@@ -490,9 +490,13 @@ namespace Autosalon_OneZone.Controllers
         [HttpGet] // Označava da je ova akcija namijenjena za GET zahtjeve (što AJAX $.get i jeste)
         public async Task<JsonResult> GetVozilaJson(string? searchQuery = null, int page = 1, string? sortOrder = null) // Dodani parametri
         {
-            int pageSize = 10; // Definišite veličinu stranice za paginaciju
+            // Change this line:
+            // int pageSize = 10;
 
-            var query = _context.Vozila.AsQueryable();
+            // To this (a very large number to effectively show all):
+            int pageSize = int.MaxValue;
+
+            var query = _context.Vozila.AsQueryable();
 
             // Primjena filtera pretrage po Marki ili Modelu (isto kao u GetVozilaSection)
             if (!string.IsNullOrEmpty(searchQuery))
@@ -572,7 +576,11 @@ namespace Autosalon_OneZone.Controllers
         [HttpGet]
         public async Task<JsonResult> GetProfiliJson(string? searchQuery = null, int page = 1)
         {
-            int pageSize = 10;
+            // Change this line:
+            // int pageSize = 10;
+
+            // To this:
+            int pageSize = int.MaxValue;
 
             var query = _context.Users.AsQueryable();
 

@@ -3207,6 +3207,88 @@
       ]
     },
     {
+      "Route": "images/vozila/1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.drlqonook1.jpg",
+      "AssetFile": "images/vozila/1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:03:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "drlqonook1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg",
+      "AssetFile": "images/vozila/1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:03:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY="
+        }
+      ]
+    },
+    {
       "Route": "images/vozila/15ce749e-99dc-4775-80f4-d8ac9479dae2_photo_2024-06-08_15-20-20.aob79xzvdb.jpg",
       "AssetFile": "images/vozila/15ce749e-99dc-4775-80f4-d8ac9479dae2_photo_2024-06-08_15-20-20.jpg",
       "Selectors": [],
@@ -3285,6 +3367,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/17c0d7b4-3943-4f50-8c70-4dab8f8e3fd0_photo_2024-06-08_15-20-22.b71z3x11p1.jpg",
+      "AssetFile": "images/vozila/17c0d7b4-3943-4f50-8c70-4dab8f8e3fd0_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:02:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b71z3x11p1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/17c0d7b4-3943-4f50-8c70-4dab8f8e3fd0_photo_2024-06-08_15-20-22.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/17c0d7b4-3943-4f50-8c70-4dab8f8e3fd0_photo_2024-06-08_15-20-22.jpg",
+      "AssetFile": "images/vozila/17c0d7b4-3943-4f50-8c70-4dab8f8e3fd0_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:02:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
         }
       ]
     },
@@ -4027,6 +4191,88 @@
       ]
     },
     {
+      "Route": "images/vozila/c28b2e1a-55c9-4051-b38a-56c7c28a2e7a_photo_2024-06-08_15-20-21.drlqonook1.jpg",
+      "AssetFile": "images/vozila/c28b2e1a-55c9-4051-b38a-56c7c28a2e7a_photo_2024-06-08_15-20-21.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:01:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "drlqonook1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/c28b2e1a-55c9-4051-b38a-56c7c28a2e7a_photo_2024-06-08_15-20-21.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/c28b2e1a-55c9-4051-b38a-56c7c28a2e7a_photo_2024-06-08_15-20-21.jpg",
+      "AssetFile": "images/vozila/c28b2e1a-55c9-4051-b38a-56c7c28a2e7a_photo_2024-06-08_15-20-21.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:01:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY="
+        }
+      ]
+    },
+    {
       "Route": "images/vozila/c5fb182d-0106-4f6b-ba12-632d87307ce1_photo_2024-06-08_15-20-21.drlqonook1.jpg",
       "AssetFile": "images/vozila/c5fb182d-0106-4f6b-ba12-632d87307ce1_photo_2024-06-08_15-20-21.jpg",
       "Selectors": [],
@@ -4105,6 +4351,252 @@
         {
           "Name": "integrity",
           "Value": "sha256-qUQWqYV3HOJC+zBgrb6IC3eC5d3Dr9M1QGpG5rZYYFY="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.aob79xzvdb.jpg",
+      "AssetFile": "images/vozila/cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67928"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aob79xzvdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg",
+      "AssetFile": "images/vozila/cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67928"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.c969ul34u3.jpg",
+      "AssetFile": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "91772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8AnX/V43jDsJPZqY0CXqPrVZ7rPwuR9+Va8NjoB3fhA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:03:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c969ul34u3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8AnX/V43jDsJPZqY0CXqPrVZ7rPwuR9+Va8NjoB3fhA="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
+      "AssetFile": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "91772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8AnX/V43jDsJPZqY0CXqPrVZ7rPwuR9+Va8NjoB3fhA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:03:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8AnX/V43jDsJPZqY0CXqPrVZ7rPwuR9+Va8NjoB3fhA="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.b71z3x11p1.jpg",
+      "AssetFile": "images/vozila/e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:02:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b71z3x11p1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg",
+      "AssetFile": "images/vozila/e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 22:02:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
         }
       ]
     },
