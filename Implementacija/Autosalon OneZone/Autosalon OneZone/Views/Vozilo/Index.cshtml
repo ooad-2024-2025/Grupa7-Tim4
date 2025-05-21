@@ -10,12 +10,39 @@
 {
     <div class="alert alert-info">
         Rezultati pretrage za: <strong>@ViewData["SearchTerm"]</strong>
-        
     </div>
 }
 
 @* Display results count *@
 <p>Pronađeno @Model.Count() vozila</p>
+
+<style>
+    .vehicle-card {
+        transition: transform 0.2s;
+    }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+    .vehicle-image {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .vehicle-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #28a745;
+        margin-bottom: 0.5rem;
+    }
+
+    .vehicle-specs {
+        width: 100%;
+    }
+</style>
 
 @if (!Model.Any())
 {
@@ -29,25 +56,36 @@ else
         @foreach (var vozilo in Model)
         {
             <div class="col">
-                <div class="card h-100">
-                    @if (!string.IsNullOrEmpty(vozilo.Slika))
-                    {
-                        <img src="@vozilo.Slika" class="card-img-top" alt="@vozilo.Marka @vozilo.Model">
-                    }
-                    else
-                    {
-                        <img src="/img/no-image.png" class="card-img-top" alt="Nema slike">
-                    }
-                    <div class="card-body">
-                        <h5 class="card-title">@vozilo.Marka @vozilo.Model</h5>
-                        <p class="card-text">
-                            Godište: @vozilo.Godiste<br>
-                            Gorivo: @vozilo.Gorivo<br>
-                            Kilometraža: @vozilo.Kilometraza km<br>
-                            Cijena: <strong>€@vozilo.Cijena.Value.ToString("N0")</strong>
-                        </p>
-                        <a href="@Url.Action("Details", "Vozila", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
-                        <a href="@Url.Action("DodajUKorpu", "Korpa", new { id = vozilo.VoziloID })" class="btn btn-success">Dodaj u korpu</a>
+                <div class="card vehicle-card h-100">
+                    <div class="card-body d-flex p-0">
+                        <div class="p-3">
+                            @if (!string.IsNullOrEmpty(vozilo.Slika))
+                            {
+                                <img src="~/images/vozila/@vozilo.Slika" class="vehicle-image rounded" alt="@vozilo.Marka @vozilo.Model">
+                            }
+                            else
+                            {
+                                <img src="~/img/no-image.png" class="vehicle-image rounded" alt="Nema slike">
+                            }
+                        </div>
+                        <div class="flex-grow-1 p-3">
+                            <h5 class="card-title">@vozilo.Marka @vozilo.Model</h5>
+
+                            <div class="vehicle-specs">
+                                <p class="card-text mb-1">
+                                    Godište: @vozilo.Godiste<br>
+                                    Gorivo: @vozilo.Gorivo<br>
+                                    Boja: @vozilo.Boja<br>
+                                    Kubikaža: @vozilo.Kubikaza<br>
+                                    Kilometraža: @vozilo.Kilometraza km
+                                </p>
+                                <div class="vehicle-price">€@vozilo.Cijena.Value.ToString("N0")</div>
+                                <div class="mb-2">
+                                    <a href="@Url.Action("Details", "Vozila", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
+                                    <a href="@Url.Action("DodajUKorpu", "Korpa", new { id = vozilo.VoziloID })" class="btn btn-success">Dodaj u korpu</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

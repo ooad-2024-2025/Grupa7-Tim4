@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\images\\vozila\\04fa33ac-2c64-44d0-82fc-e69437abf1f9_photo_2024-06-08_15-20-20.jpg"
     },
     {
+      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\0d3de070-b137-4a69-940a-d577525dc8ff_photo_2024-06-08_15-20-19.jpg",
+      "PackagePath": "staticwebassets\\images\\vozila\\0d3de070-b137-4a69-940a-d577525dc8ff_photo_2024-06-08_15-20-19.jpg"
+    },
+    {
       "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg",
       "PackagePath": "staticwebassets\\images\\vozila\\1011929f-6ed9-4d2d-8fc1-6bb0ade46462_photo_2024-06-08_15-20-21.jpg"
     },
@@ -81,6 +85,10 @@
       "PackagePath": "staticwebassets\\images\\vozila\\6081b597-74f1-4a1d-b700-d1a9421c7f0d_photo_2024-06-08_15-20-19.jpg"
     },
     {
+      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\71bac65d-ffd4-45d4-aa40-a587e17b960b_photo_2024-06-08_15-20-20.jpg",
+      "PackagePath": "staticwebassets\\images\\vozila\\71bac65d-ffd4-45d4-aa40-a587e17b960b_photo_2024-06-08_15-20-20.jpg"
+    },
+    {
       "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\904ac17a-0d6d-43e1-9193-7f11203da6df_photo_2024-06-08_15-20-20.jpg",
       "PackagePath": "staticwebassets\\images\\vozila\\904ac17a-0d6d-43e1-9193-7f11203da6df_photo_2024-06-08_15-20-20.jpg"
     },
@@ -109,16 +117,24 @@
       "PackagePath": "staticwebassets\\images\\vozila\\cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg"
     },
     {
-      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
-      "PackagePath": "staticwebassets\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg"
-    },
-    {
       "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
       "PackagePath": "staticwebassets\\images\\vozila\\d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg"
     },
     {
+      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\d7496593-88ad-4128-85f7-b8c03872b123_photo_2024-06-08_15-20-17.jpg",
+      "PackagePath": "staticwebassets\\images\\vozila\\d7496593-88ad-4128-85f7-b8c03872b123_photo_2024-06-08_15-20-17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\deac85c3-0968-4441-9a79-ba62b244cf47_photo_2024-06-08_15-20-17.jpg",
+      "PackagePath": "staticwebassets\\images\\vozila\\deac85c3-0968-4441-9a79-ba62b244cf47_photo_2024-06-08_15-20-17.jpg"
+    },
+    {
       "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg",
       "PackagePath": "staticwebassets\\images\\vozila\\e5d9f22d-2c24-476e-a473-03d46dab35d5_photo_2024-06-08_15-20-22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\f4cf1221-3a96-4320-ba3a-2f904a9c37ae_photo_2024-06-08_15-20-20.jpg",
+      "PackagePath": "staticwebassets\\images\\vozila\\f4cf1221-3a96-4320-ba3a-2f904a9c37ae_photo_2024-06-08_15-20-20.jpg"
     },
     {
       "Id": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\js\\site.js",
