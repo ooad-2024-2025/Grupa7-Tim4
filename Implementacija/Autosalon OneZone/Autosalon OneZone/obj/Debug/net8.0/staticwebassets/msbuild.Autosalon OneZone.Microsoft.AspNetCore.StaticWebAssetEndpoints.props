@@ -324,6 +324,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-JgxDmCDhPTGfxDZ6dn\u002BwPGEV\u002BMY5vOdfWnixEzHe79Q="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67928"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022JgxDmCDhPTGfxDZ6dn\u002BwPGEV\u002BMY5vOdfWnixEzHe79Q=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 22:01:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.b71z3x11p1.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\vozila\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"b71z3x11p1"},{"Name":"integrity","Value":"sha256-10f/Jnj3llUnME\u002BH0O/6hskoZHsHJcfx5EjGBmldhh0="},{"Name":"label","Value":"_content/Autosalon OneZone/images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"77511"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002210f/Jnj3llUnME\u002BH0O/6hskoZHsHJcfx5EjGBmldhh0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 11:17:04 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\vozila\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-10f/Jnj3llUnME\u002BH0O/6hskoZHsHJcfx5EjGBmldhh0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"77511"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002210f/Jnj3llUnME\u002BH0O/6hskoZHsHJcfx5EjGBmldhh0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 11:17:04 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Autosalon OneZone/images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.c969ul34u3.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\vozila\d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
