@@ -46,7 +46,7 @@ namespace Autosalon_OneZone.ViewModels.Admin // Provjerite da li je ovo ispravan
         [Required(ErrorMessage = "Kubikaža ne smije biti prazna.")]
         [Range(1, double.MaxValue, ErrorMessage = "Kubikaža mora biti pozitivan broj.")]
         [Display(Name = "Kubikaža")]
-        public double? Kubikaza { get; set; }
+        public decimal? Kubikaza { get; set; }
 
         [Required(ErrorMessage = "Boja ne smije biti prazna.")]
         [MaxLength(50, ErrorMessage = "Boja ne može biti duža od 50 karaktera.")]

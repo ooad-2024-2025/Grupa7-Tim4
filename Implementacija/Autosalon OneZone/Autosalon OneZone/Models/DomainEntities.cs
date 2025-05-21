@@ -128,7 +128,7 @@ namespace Autosalon_OneZone.Models // Vaš Namespace
         // [Required] // Dodajte ako gorivo MORA postojati
         public TipGoriva Gorivo { get; set; } // Enum je value type, non-nullable default je prva vrijednost (0)
 
-        public double? Kubikaza { get; set; } // Nullable double je ok
+        public decimal? Kubikaza { get; set; }
 
         // [Required] // Dodajte ako boja MORA postojati
         public string Boja { get; set; } // Warning CS8618 ako nije inicijalizovan/required
