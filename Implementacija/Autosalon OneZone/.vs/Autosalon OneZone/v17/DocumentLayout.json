@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\wwwroot\\css\\kod.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\wwwroot\\css\\kod.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\controllers\\adminpanelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\controllers\\adminpanelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\views\\profil\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\views\\profil\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\wwwroot\\css\\editprofile.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\wwwroot\\css\\editprofile.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|c:\\users\\ap\\desktop\\repos\\grupa7-tim4\\implementacija\\autosalon onezone\\autosalon onezone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62378DA7-8671-47F5-B8E9-6F051442DAE8}|Autosalon OneZone\\Autosalon OneZone.csproj|solutionrelative:autosalon onezone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Autosalon OneZone\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Autosalon OneZone\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAQwNsAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T01:28:22.442Z",
+              "Title": "kod.css",
+              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\kod.css",
+              "RelativeDocumentMoniker": "Autosalon OneZone\\wwwroot\\css\\kod.css",
+              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\kod.css",
+              "RelativeToolTip": "Autosalon OneZone\\wwwroot\\css\\kod.css",
+              "ViewState": "AgIAACUAAAAAAAAAAAAqwDkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-21T01:44:58.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AdminPanelController.cs",
-              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Controllers\\AdminPanelController.cs",
-              "RelativeDocumentMoniker": "Autosalon OneZone\\Controllers\\AdminPanelController.cs",
-              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Controllers\\AdminPanelController.cs",
-              "RelativeToolTip": "Autosalon OneZone\\Controllers\\AdminPanelController.cs",
-              "ViewState": "AgIAAHYCAAAAAAAAAAAAAJACAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T01:15:27.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "editprofile.css",
-              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\editprofile.css",
-              "RelativeDocumentMoniker": "Autosalon OneZone\\wwwroot\\css\\editprofile.css",
-              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\css\\editprofile.css",
-              "RelativeToolTip": "Autosalon OneZone\\wwwroot\\css\\editprofile.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-21T01:06:38.556Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Views\\Profil\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Autosalon OneZone\\Views\\Profil\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Views\\Profil\\Edit.cshtml",
-              "RelativeToolTip": "Autosalon OneZone\\Views\\Profil\\Edit.cshtml",
-              "ViewState": "AgIAACoAAAAAAAAAAADwvzkAAAAMAAAAAAAAAA==",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Autosalon OneZone\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Autosalon OneZone\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAgwCsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-21T01:01:50.874Z",
+              "WhenOpened": "2025-05-21T01:40:44.825Z",
               "EditorCaption": ""
             },
             {
