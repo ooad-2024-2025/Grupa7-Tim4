@@ -49,6 +49,10 @@ namespace Autosalon_OneZone.Data
             // VrstaRacuna mapiranje za staru klasu Korisnik više NIJE relevantno
             // Role se upravljaju kroz IdentityRole
             // modelBuilder.Entity<Korisnik>().Property(e => e.VrstaRacuna).HasConversion<string>(); // UKLONJENO
+            modelBuilder.Entity<Vozilo>()
+           .Property(v => v.Kubikaza)
+           .HasColumnType("decimal(18,1)");
+
 
             modelBuilder.Entity<Vozilo>()
                 .Property(e => e.Gorivo)
