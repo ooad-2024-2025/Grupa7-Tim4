@@ -1,81 +1,56 @@
-﻿
-@model IEnumerable<Autosalon_OneZone.Models.Vozilo>
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+﻿@model IEnumerable<Autosalon_OneZone.Models.Vozilo>
 @{
-    ViewData["Title"] = "Lista Vozila"; // Naslov stranice
+    ViewData["Title"] = "Vozila";
 }
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<h1>Vozila</h1>
 
-<h1>@ViewData["Title"]</h1>
-
-@* Proveravamo da li je korisnik administrator pre nego što prikažemo link za dodavanje novog vozila *@
-@if (User.IsInRole("Administrator")) // Proverava da li je trenutni korisnik u roli "Administrator"
+@* Show search info if search was performed *@
+@if (!string.IsNullOrEmpty(ViewData["SearchTerm"] as string))
 {
-    <p>
-        @* Link ka GET akciji "Create" u "Vozilo" kontroleru *@
-        <a asp-controller="Vozilo" asp-action="Create" class="btn btn-primary">Dodaj Novo Vozilo</a>
-    </p>
+    <div class="alert alert-info">
+        Rezultati pretrage za: <strong>@ViewData["SearchTerm"]</strong>
+        
+    </div>
 }
 
+@* Display results count *@
+<p>Pronađeno @Model.Count() vozila</p>
 
-@* Primer prikaza liste vozila u tabeli *@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Marka</th>
-            <th>Model</th>
-            <th>Godiste</th>
-            <th>Gorivo</th>
-            <th>Kubikaza</th>
-            <th>Boja</th>
-            <th>Kilometraza</th>
-            <th>Cijena</th>
-            <th>Slika</th>
-            <th>Opis</th>
-            @* Dodajte ostale kolone po potrebi *@
-            <th></th> @* Kolona za akcije (Detalji, Izmeni, Obriši) *@
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var vozilo in Model) // Prolazimo kroz listu vozila dobijenu od kontrolera (IEnumerable<Vozilo>)
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        Nema vozila koja odgovaraju vašoj pretrazi.
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var vozilo in Model)
         {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => vozilo.Marka)</td> @* Prikaz Marka *@
-                <td>@Html.DisplayFor(modelItem => vozilo.Model)</td> @* Prikaz Model *@
-                <td>@Html.DisplayFor(modelItem => vozilo.Godiste)</td> @* Prikaz Godiste *@
-                <td>@Html.DisplayFor(modelItem => vozilo.Gorivo)</td> @* Prikaz Gorivo (enum će se prikazati kao string) *@
-                <td>@Html.DisplayFor(modelItem => vozilo.Kubikaza)</td>
-                <td>@Html.DisplayFor(modelItem => vozilo.Boja)</td>
-                <td>@Html.DisplayFor(modelItem => vozilo.Kilometraza)</td>
-                <td>@Html.DisplayFor(modelItem => vozilo.Cijena)</td>
-                <td>
+            <div class="col">
+                <div class="card h-100">
                     @if (!string.IsNullOrEmpty(vozilo.Slika))
                     {
-                        <img src="@vozilo.Slika" alt="Slika @vozilo.Marka @vozilo.Model" width="100" /> 
+                        <img src="@vozilo.Slika" class="card-img-top" alt="@vozilo.Marka @vozilo.Model">
                     }
-                </td>
-                 <td>@Html.DisplayFor(modelItem => vozilo.Opis)</td>
-
-                <td>
-                    @* Opciono: Linkovi ka drugim akcijama (Detalji, Izmeni, Obriši) *@
-                    @* Ovi linkovi bi takođe trebalo da budu uslovljeni ulogom Administratora ako vode na Edit/Delete *@
-
-                    @* Link za Detalje (verovatno dostupan svima) *@
-                    @* <a asp-controller="Vozilo" asp-action="Details" asp-route-id="@vozilo.VoziloID">Detalji</a> *@
-
-                    @* Linkovi za izmenu i brisanje (samo za Admina) *@
-                    @if (User.IsInRole("Administrator"))
+                    else
                     {
-                         @* <a asp-controller="Vozilo" asp-action="Edit" asp-route-id="@vozilo.VoziloID">[Izmeni]</a> | *@
-                         @* <a asp-controller="Vozilo" asp-action="Delete" asp-route-id="@vozilo.VoziloID">[Obriši]</a> *@
+                        <img src="/img/no-image.png" class="card-img-top" alt="Nema slike">
                     }
-                </td>
-            </tr>
+                    <div class="card-body">
+                        <h5 class="card-title">@vozilo.Marka @vozilo.Model</h5>
+                        <p class="card-text">
+                            Godište: @vozilo.Godiste<br>
+                            Gorivo: @vozilo.Gorivo<br>
+                            Kilometraža: @vozilo.Kilometraza km<br>
+                            Cijena: <strong>€@vozilo.Cijena.Value.ToString("N0")</strong>
+                        </p>
+                        <a href="@Url.Action("Details", "Vozila", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
+                        <a href="@Url.Action("DodajUKorpu", "Korpa", new { id = vozilo.VoziloID })" class="btn btn-success">Dodaj u korpu</a>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
-
-@* Sekcija skripti ako je potrebna za ovu stranicu (npr. za sortiranje tabele) *@
-@section Scripts {
-    @* Primer uključivanja validacionih skripti, mada je ovo obično potrebno samo za forme *@
-    @* <partial name="_ValidationScriptsPartial" /> *@
+    </div>
 }

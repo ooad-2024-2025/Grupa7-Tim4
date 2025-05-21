@@ -38,11 +38,15 @@
                 <div class="spacer"></div>
 
 
-                <div class="search-bar">
-                    @* Traka za pretragu *@
-                    <input type="text" placeholder="Pretraži vozila..." id="search-input">
-                    <button id="search-button">Pretraži</button> @* Dugme za pretragu (stil u kod.css) *@
-                </div>
+        <div class="search-bar">
+            @* Traka za pretragu *@
+            <form id="searchForm" action="/Vozilo/Index" method="get">
+                <input type="text" placeholder="Pretraži vozila..." id="search-input" name="searchTerm">
+                <button id="search-button" type="submit">Pretraži</button> @* Dugme za pretragu (stil u kod.css) *@
+            </form>
+        </div>
+
+
 
                 <div class="nav-links">
                     @* Kontejner za linkove na desnoj strani *@
@@ -124,3 +128,18 @@
             @await RenderSectionAsync("BottomScripts", required: false) @* Dodatna sekcija za skripte ako vam treba *@
         </body>
     </html>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Handle Enter key press in search input
+            $("#search-input").keypress(function(e) {
+                if (e.which == 13) { // Enter key
+                    e.preventDefault();
+                    $("#searchForm").submit();
+                }
+            });
+        });
+    </script>
+}

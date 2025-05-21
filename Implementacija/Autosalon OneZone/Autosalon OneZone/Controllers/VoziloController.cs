@@ -20,14 +20,29 @@ namespace Autosalon_OneZone.Controllers
         }
 
         // GET: /Vozilo/Index
-        // Akcija za prikaz liste svih vozila
-        // Dostupna SVIM korisnicima (ukljucujuci goste) jer nema [Authorize] atributa
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm)
         {
-            // Pozivamo servis da dohvati sva vozila iz baze
+            // Get all vehicles or filter if searchTerm is provided
             var vozila = await _voziloService.GetAllVozilaAsync();
 
-            // Prosleđujemo listu vozila View-u (Views/Vozilo/Index.cshtml)
+            // If search term is provided, filter the results
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Split search term into words for better matching
+                var searchWords = searchTerm.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                // Filter vehicles where any search word is contained in the marca (make) or model
+                vozila = vozila.Where(v =>
+                    searchWords.Any(word =>
+                        (v.Marka?.ToLower().Contains(word) ?? false) ||
+                        (v.Model?.ToLower().Contains(word) ?? false)
+                    )
+                ).ToList();
+
+                // Pass the search term to the view to show it in the search box
+                ViewData["SearchTerm"] = searchTerm;
+            }
+
             return View(vozila);
         }
 
