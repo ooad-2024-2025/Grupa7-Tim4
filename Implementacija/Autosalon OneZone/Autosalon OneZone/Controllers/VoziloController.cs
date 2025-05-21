@@ -20,31 +20,122 @@ namespace Autosalon_OneZone.Controllers
         }
 
         // GET: /Vozilo/Index
-        public async Task<IActionResult> Index(string searchTerm)
+        // PUT THIS NEW ACTION IN VoziloController.cs
+        public async Task<IActionResult> Index(string searchTerm, string sortOrder,
+            int? godisteOd, int? godisteDo, string gorivo, string boja,
+            decimal? kubikazaOd, decimal? kubikazaDo,
+            double? kilometrazaOd, double? kilometrazaDo,
+            decimal? cijenaOd, decimal? cijenaDo)
         {
-            // Get all vehicles or filter if searchTerm is provided
+            // Get all vehicles
             var vozila = await _voziloService.GetAllVozilaAsync();
 
-            // If search term is provided, filter the results
+            // Apply search filter if provided
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                // Split search term into words for better matching
                 var searchWords = searchTerm.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-                // Filter vehicles where any search word is contained in the marca (make) or model
                 vozila = vozila.Where(v =>
                     searchWords.Any(word =>
                         (v.Marka?.ToLower().Contains(word) ?? false) ||
                         (v.Model?.ToLower().Contains(word) ?? false)
                     )
                 ).ToList();
-
-                // Pass the search term to the view to show it in the search box
                 ViewData["SearchTerm"] = searchTerm;
+            }
+
+            // Apply year range filter
+            if (godisteOd.HasValue)
+            {
+                vozila = vozila.Where(v => v.Godiste >= godisteOd.Value).ToList();
+                ViewData["GodisteOd"] = godisteOd.Value;
+            }
+            if (godisteDo.HasValue)
+            {
+                vozila = vozila.Where(v => v.Godiste <= godisteDo.Value).ToList();
+                ViewData["GodisteDo"] = godisteDo.Value;
+            }
+
+            // Apply fuel type filter
+            if (!string.IsNullOrEmpty(gorivo))
+            {
+                vozila = vozila.Where(v => v.Gorivo.ToString() == gorivo).ToList();
+                ViewData["Gorivo"] = gorivo;
+            }
+
+            // Apply color filter
+            if (!string.IsNullOrEmpty(boja))
+            {
+                vozila = vozila.Where(v => v.Boja != null && v.Boja.ToLower().Contains(boja.ToLower())).ToList();
+                ViewData["Boja"] = boja;
+            }
+
+            // Apply engine size range filter
+            if (kubikazaOd.HasValue)
+            {
+                vozila = vozila.Where(v => v.Kubikaza >= kubikazaOd.Value).ToList();
+                ViewData["KubikazaOd"] = kubikazaOd.Value;
+            }
+            if (kubikazaDo.HasValue)
+            {
+                vozila = vozila.Where(v => v.Kubikaza <= kubikazaDo.Value).ToList();
+                ViewData["KubikazaDo"] = kubikazaDo.Value;
+            }
+
+            // Apply mileage range filter
+            if (kilometrazaOd.HasValue)
+            {
+                vozila = vozila.Where(v => v.Kilometraza >= kilometrazaOd.Value).ToList();
+                ViewData["KilometrazaOd"] = kilometrazaOd.Value;
+            }
+            if (kilometrazaDo.HasValue)
+            {
+                vozila = vozila.Where(v => v.Kilometraza <= kilometrazaDo.Value).ToList();
+                ViewData["KilometrazaDo"] = kilometrazaDo.Value;
+            }
+
+            // Apply price range filter
+            if (cijenaOd.HasValue)
+            {
+                vozila = vozila.Where(v => v.Cijena >= cijenaOd.Value).ToList();
+                ViewData["CijenaOd"] = cijenaOd.Value;
+            }
+            if (cijenaDo.HasValue)
+            {
+                vozila = vozila.Where(v => v.Cijena <= cijenaDo.Value).ToList();
+                ViewData["CijenaDo"] = cijenaDo.Value;
+            }
+
+            // Apply sorting
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSortParam"] = sortOrder == "price" ? "price_desc" : "price";
+            ViewData["YearSortParam"] = sortOrder == "year" ? "year_desc" : "year";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    vozila = vozila.OrderByDescending(v => v.Marka).ThenByDescending(v => v.Model).ToList();
+                    break;
+                case "price":
+                    vozila = vozila.OrderBy(v => v.Cijena).ToList();
+                    break;
+                case "price_desc":
+                    vozila = vozila.OrderByDescending(v => v.Cijena).ToList();
+                    break;
+                case "year":
+                    vozila = vozila.OrderBy(v => v.Godiste).ToList();
+                    break;
+                case "year_desc":
+                    vozila = vozila.OrderByDescending(v => v.Godiste).ToList();
+                    break;
+                default: // Default sort by name ascending
+                    vozila = vozila.OrderBy(v => v.Marka).ThenBy(v => v.Model).ToList();
+                    break;
             }
 
             return View(vozila);
         }
+
 
         // --- Akcije za ADMINISTRACIJU VOZILA (samo za rolu Administrator) ---
 
