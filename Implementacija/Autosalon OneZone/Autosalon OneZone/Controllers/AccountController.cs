@@ -17,28 +17,21 @@ namespace Autosalon_OneZone.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<AccountController> _logger; // Dodato za logovanje (preporucljivo)
-                                                             // Možda RoleManager ako Admin dodaje role (kao sto ste imali komentarisano)
-                                                             // private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager; // Dodato za rad sa rolama
+        private readonly ILogger<AccountController> _logger;
 
         // Konstruktor gde se injektuju potrebni servisi
-        // U vasem AccountController.cs fajlu, unutar klase AccountController
-        // Pronadjite postojeci konstruktor i zamenite ga ovim:
-
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<AccountController> logger) // ILogger dodato ovde
-                                               // Ako koristite RoleManager, odkomentarisite i RoleManager u listi parametara
-        /*, RoleManager<IdentityRole> roleManager */
-        { // <--- OVDE POCINJE TELO KONSTRUKTORA
+            RoleManager<IdentityRole> roleManager, // Dodato za rad sa rolama
+            ILogger<AccountController> logger)
+        {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger; // Injektovanje ILogger-a (opciono)
-                              // _roleManager = roleManager; // Ako koristite RoleManager, dodelite ga ovde
-        } // <--- OVDE SE ZAVRSAVA TELO KONSTRUKTORA
-
-        // --- AKCIJE ZA REGISTRACIJU ---
+            _roleManager = roleManager; // Dodato za rad sa rolama
+            _logger = logger;
+        }
 
         // GET: /Account/Register
         // Prikazuje formu za registraciju
@@ -81,13 +74,17 @@ namespace Autosalon_OneZone.Controllers
                 {
                     _logger?.LogInformation("User created a new account with password."); // Logovanje (opciono)
 
-                    // Opciono: Dodajte korisniku podrazumevanu rolu, npr. "Klijent"
-                    // Pre nego sto pozovete AddToRoleAsync, proverite da li rola "Klijent" postoji.
-                    // Ovo obicno radite prilikom inicijalizacije Identity u Program.cs ili Startup.cs
-                    // var roleExists = await _roleManager.RoleExistsAsync("Klijent");
-                    // if (!roleExists) { await _roleManager.CreateAsync(new IdentityRole("Klijent")); }
-                    // await _userManager.AddToRoleAsync(user, "Klijent");
+                    // Proverite da li rola "Kupac" postoji. Ako ne postoji, kreirajte je.
+                    const string kupacRoleName = "Kupac";
+                    if (!await _roleManager.RoleExistsAsync(kupacRoleName))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(kupacRoleName));
+                        _logger?.LogInformation($"Rola '{kupacRoleName}' kreirana.");
+                    }
 
+                    // Dodaj korisnika u rolu "Kupac"
+                    await _userManager.AddToRoleAsync(user, kupacRoleName);
+                    _logger?.LogInformation($"Korisnik '{user.Email}' dodan u rolu '{kupacRoleName}'.");
 
                     // Opciono: Prijavite korisnika odmah nakon registracije
                     // Ako zelite da korisnik bude automatski prijavljen, odkomentarisite sledecu liniju
@@ -112,8 +109,8 @@ namespace Autosalon_OneZone.Controllers
             return View(model);
         }
 
-
-        // --- AKCIJE ZA PRIJAVU ---
+        // ... ostali kod ...
+        // Sve ostale akcije ostaju nepromenjene
 
         // GET: /Account/Login
         // Prikazuje formu za login
@@ -229,22 +226,5 @@ namespace Autosalon_OneZone.Controllers
             // View fajl bi bio Views/Account/AccessDenied.cshtml
             return View();
         }
-
-        // Opciono: Primer akcije koja zahteva autorizaciju (samo prijavljeni korisnici)
-        // [Authorize]
-        // public IActionResult Profile()
-        // {
-        //     // Ovdje logika za prikaz profila prijavljenog korisnika
-        //     return View();
-        // }
-
-        // Opciono: Primer akcije koja zahteva odredjenu rolu (samo Admini)
-        // [Authorize(Roles = "Administrator")]
-        // public IActionResult AdminDashboard()
-        // {
-        //     // Ovdje logika za admin dashboard
-        //     return View();
-        // }
-
     }
 }
