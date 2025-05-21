@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q4pjUJLz3kssGVN8QVNLRfF2eV5L7chRwmDEpPyljqo=",
+  "Hash": "o1POAfYTQFD6gcOC4iMoJ+QgtapaCi9zn+28JYbaCA4=",
   "Source": "Autosalon OneZone",
   "BasePath": "_content/Autosalon OneZone",
   "Mode": "Default",
@@ -1863,6 +1863,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\vozila\\cd903d03-448a-40e3-b8a4-2c900ccf8aa5_photo_2024-06-08_15-20-20.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "SourceId": "Autosalon OneZone",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\",
+      "BasePath": "_content/Autosalon OneZone",
+      "RelativePath": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b71z3x11p1",
+      "Integrity": "10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg"
     },
     {
       "Identity": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
@@ -7639,6 +7660,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-JgxDmCDhPTGfxDZ6dn+wPGEV+MY5vOdfWnixEzHe79Q="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.b71z3x11p1.jpg",
+      "AssetFile": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 11:17:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b71z3x11p1"
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "AssetFile": "C:\\Users\\AP\\Desktop\\repos\\Grupa7-Tim4\\Implementacija\\Autosalon OneZone\\Autosalon OneZone\\wwwroot\\images\\vozila\\cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 11:17:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
         }
       ]
     },

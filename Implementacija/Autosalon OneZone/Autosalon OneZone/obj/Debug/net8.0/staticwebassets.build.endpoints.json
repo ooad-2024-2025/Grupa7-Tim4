@@ -4437,6 +4437,88 @@
       ]
     },
     {
+      "Route": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.b71z3x11p1.jpg",
+      "AssetFile": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 11:17:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b71z3x11p1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "AssetFile": "images/vozila/cf312a5b-0ecd-4cfe-9e8d-46ab4d1376f6_photo_2024-06-08_15-20-22.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 11:17:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-10f/Jnj3llUnME+H0O/6hskoZHsHJcfx5EjGBmldhh0="
+        }
+      ]
+    },
+    {
       "Route": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.c969ul34u3.jpg",
       "AssetFile": "images/vozila/d54bf900-f405-41e4-95af-920f56f8c6ee_photo_2024-06-08_15-20-19.jpg",
       "Selectors": [],
