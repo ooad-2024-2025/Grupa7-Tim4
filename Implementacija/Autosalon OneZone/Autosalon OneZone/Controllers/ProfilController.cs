@@ -125,7 +125,6 @@ namespace Autosalon_OneZone.Controllers
             // Za jednostavan prikaz u ViewModelu, uzimamo prvu rolu ili postavljamo podrazumevanu ("Klijent")
             string role = roles.FirstOrDefault() ?? "Klijent"; // Primer: Uzimamo prvu rolu ili default vrednost
 
-            // --- Dohvatanje Recenzija Korisnika ---
             // *** OVDE MORATE DODATI VAŠU LOGIKU ZA DOHVATANJE RECENZIJA IZ BAZE PODATAKA ***
             // Ovo zahteva korišćenje Vašeg DbContext-a i upita nad tabelom Recenzija (npr. _context.Recenzije).
             // Filtrirajte po KorisnikId-u (ako je to svojstvo u Vašem modelu Recenzija) i mapirajte na ProfileViewModel.ReviewViewModel.
