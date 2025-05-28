@@ -362,14 +362,14 @@ else
             $('#clearAllFilters').click(function() {
                 // Keep the search term, clear everything else
                 var searchTerm = '@ViewData["SearchTerm"]';
-                
+
                 // Reset all filter form fields
                 $('#filterForm').find('input:not([name="searchTerm"])').val('');
                 $('#filterForm').find('select:not([name="searchTerm"])').val('');
-                
+
                 // Reset sort order to default
                 $('#sortOrder').val('');
-                
+
                 // If there was a search term, maintain it
                 if (searchTerm) {
                     $('<input>').attr({
@@ -378,32 +378,74 @@ else
                         value: searchTerm
                     }).appendTo('#filterForm');
                 }
-                
+
                 // Submit the form
                 $('#filterForm').submit();
             });
-            
+
             // Change event for sort order to auto-submit
             $('#sortOrder').change(function() {
                 $('#filterForm').submit();
             });
-            
-            // Validation for godište (year range)
-            $('#godisteOd, #godisteDo').on('input', function() {
+
+            // Validation for godište (year range) with fixes:
+            // 1. Remove automatic "1900" default
+            // 2. Add range validation between Od and Do
+            $('#godisteOd, #godisteDo').on('change', function() {
                 var min = 1900;
                 var max = @currentYear;
-                var val = parseInt($(this).val());
-                
-                if (val < min) {
-                    $(this).val(min);
-                } else if (val > max) {
-                    $(this).val(max);
+                var val = $(this).val() ? parseInt($(this).val()) : '';
+
+                // Only validate if value is entered
+                if (val !== '') {
+                    if (val < min) {
+                        $(this).val(min);
+                    } else if (val > max) {
+                        $(this).val(max);
+                    }
+
+                    // Validate Od <= Do
+                    if (this.id === 'godisteOd' && $('#godisteDo').val()) {
+                        var doVal = parseInt($('#godisteDo').val());
+                        if (val > doVal) {
+                            $('#godisteDo').val(val);
+                        }
+                    }
+                    else if (this.id === 'godisteDo' && $('#godisteOd').val()) {
+                        var odVal = parseInt($('#godisteOd').val());
+                        if (val < odVal) {
+                            $('#godisteOd').val(val);
+                        }
+                    }
                 }
             });
-            
+
+            // Add range validation for all other Od-Do fields
+            function validateRange(odId, doId) {
+                var odVal = $('#' + odId).val() ? parseFloat($('#' + odId).val()) : '';
+                var doVal = $('#' + doId).val() ? parseFloat($('#' + doId).val()) : '';
+
+                if (odVal !== '' && doVal !== '' && odVal > doVal) {
+                    $('#' + doId).val(odVal);
+                }
+            }
+
+            // Add validation to other range fields
+            $('#kubikazaOd, #kubikazaDo').on('change', function() {
+                validateRange('kubikazaOd', 'kubikazaDo');
+            });
+
+            $('#kilometrazaOd, #kilometrazaDo').on('change', function() {
+                validateRange('kilometrazaOd', 'kilometrazaDo');
+            });
+
+            $('#cijenaOd, #cijenaDo').on('change', function() {
+                validateRange('cijenaOd', 'cijenaDo');
+            });
+
             // Show filter panel if filters are applied
             if (
-                '@ViewData["GodisteOd"]' || 
+                '@ViewData["GodisteOd"]' ||
                 '@ViewData["GodisteDo"]' ||
                 '@ViewData["Gorivo"]' ||
                 '@ViewData["Boja"]' ||
