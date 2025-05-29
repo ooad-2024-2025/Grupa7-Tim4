@@ -6,17 +6,37 @@ using System.Threading.Tasks; // Potrebno za async/await
 using System.Collections.Generic; // Potrebno za IEnumerable
 using Autosalon_OneZone.Models; // Potrebno za Vozilo model i ViewModele (ako se koriste za Create/Edit)
 using Microsoft.AspNetCore.Authorization; // Potrebno za [Authorize]
+using System.Linq; // Potrebno za LINQ metode
+using Microsoft.EntityFrameworkCore;
+using Autosalon_OneZone.Data; // Potrebno za FirstOrDefaultAsync i ostale EF Core metode
 
 namespace Autosalon_OneZone.Controllers
 {
     public class VoziloController : Controller
     {
         private readonly IVoziloService _voziloService;
+        private readonly ApplicationDbContext _context;
 
-        // Injektovanje IVoziloService kroz konstruktor
-        public VoziloController(IVoziloService voziloService)
+        // Injektovanje IVoziloService i ApplicationDbContext kroz konstruktor
+        public VoziloController(IVoziloService voziloService, ApplicationDbContext context)
         {
             _voziloService = voziloService;
+            _context = context;
+        }
+
+        // GET: /Vozilo/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            // Dohvati vozilo iz baze podataka
+            var vozilo = await _context.Vozila
+                .FirstOrDefaultAsync(m => m.VoziloID == id);
+
+            if (vozilo == null)
+            {
+                return NotFound();
+            }
+
+            return View(vozilo);
         }
 
         // GET: /Vozilo/Index

@@ -335,10 +335,26 @@ else
                             </div>
 
                             <!-- Moved button container outside vehicle-specs -->
+                            <!-- Moved button container outside vehicle-specs -->
                             <div class="button-container">
-                                <a href="@Url.Action("Details", "Vozila", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
-                                <a href="@Url.Action("DodajUKorpu", "Korpa", new { id = vozilo.VoziloID })" class="btn btn-success">Dodaj u korpu</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a href="@Url.Action("Details", "Vozilo", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
+                                    <form asp-controller="Korpa" asp-action="DodajUKorpu" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@vozilo.VoziloID" />
+                                        <button type="submit" class="btn btn-success">Dodaj u korpu</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Details", "Vozilo", new { id = vozilo.VoziloID })" class="btn btn-primary">Detalji</a>
+                                    <a href="@Url.Action("Login", "Account", new { returnUrl = Context.Request.Path })" class="btn btn-outline-success">
+                                        Prijava za kupovinu
+                                    </a>
+                                }
                             </div>
+
                         </div>
                     </div>
                 </div>
