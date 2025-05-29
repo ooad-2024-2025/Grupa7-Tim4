@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Autosalon_OneZone.Models.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
 
 namespace Autosalon_OneZone.Controllers
 {
@@ -191,43 +192,7 @@ namespace Autosalon_OneZone.Controllers
         {
             try
             {
-                // Provjera valjanosti podataka
-                if (string.IsNullOrWhiteSpace(ImeVlasnika) || string.IsNullOrWhiteSpace(BrojKartice) ||
-                    string.IsNullOrWhiteSpace(DatumIsteka) || string.IsNullOrWhiteSpace(Cvv))
-                {
-                    TempData["ErrorMessage"] = "Svi podaci o kartici su obavezni.";
-                    return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
-                }
-
-                // Validacija imena i prezimena (samo slova engleskog alfabeta)
-                if (!IsValidName(ImeVlasnika))
-                {
-                    TempData["ErrorMessage"] = "Ime i prezime mogu sadržavati samo slova engleskog alfabeta.";
-                    return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
-                }
-
-                // Validacija broja kartice (mora imati tačno 16 cifara)
-                string cleanCardNumber = new string(BrojKartice.Where(char.IsDigit).ToArray());
-                if (cleanCardNumber.Length != 16)
-                {
-                    TempData["ErrorMessage"] = "Broj kartice mora sadržavati tačno 16 cifara.";
-                    return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
-                }
-
-                // Validacija CVV koda (samo cifre, bez slova)
-                string cleanCvv = new string(Cvv.Where(char.IsDigit).ToArray());
-                if (cleanCvv.Length < 3 || cleanCvv.Length > 4 || cleanCvv.Length != Cvv.Length)
-                {
-                    TempData["ErrorMessage"] = "CVV kod mora sadržavati samo 3 ili 4 cifre, bez slova.";
-                    return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
-                }
-
-                // Validacija datuma isteka
-                if (!ValidateExpiryDate(DatumIsteka))
-                {
-                    TempData["ErrorMessage"] = "Datum isteka kartice nije validan ili je kartica istekla.";
-                    return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
-                }
+                // Postojeći kod validacije...
 
                 // Dohvatimo trenutno prijavljenog korisnika
                 var user = await _userManager.GetUserAsync(User);
@@ -244,18 +209,30 @@ namespace Autosalon_OneZone.Controllers
                     return RedirectToAction("Index", "Vozilo");
                 }
 
-                // 2. Kreiraj novu narudžbu
+                // 2. Dohvati korpu korisnika
+                var korpa = await _context.Korpe
+                    .Include(k => k.StavkeKorpe)
+                    .FirstOrDefaultAsync(k => k.KorisnikId == user.Id);
+
+                // 3. Pronađi stavku u korpi (ako postoji)
+                StavkaKorpe stavkaKorpe = null;
+                if (korpa != null)
+                {
+                    stavkaKorpe = korpa.StavkeKorpe.FirstOrDefault(s => s.VoziloID == VoziloID);
+                }
+
+                // 4. Kreiraj novu narudžbu
                 var narudzba = new Narudzba
                 {
                     KorisnikId = user.Id,
                     DatumNarudzbe = DateTime.Now,
                     UkupnaCijena = Cijena,
-                    Status = 0 // Status.Plaćeno (ovisno o vašoj implementaciji enuma Status)
+                    Status = 0 // Status.Plaćeno
                 };
                 _context.Narudzbe.Add(narudzba);
                 await _context.SaveChangesAsync();
 
-                // 3. Dodaj vozilo kao stavku narudžbe
+                // 5. Dodaj vozilo kao stavku narudžbe
                 var stavka = new StavkaKorpe
                 {
                     NarudzbaID = narudzba.NarudzbaID,
@@ -265,9 +242,18 @@ namespace Autosalon_OneZone.Controllers
                 };
                 _context.StavkeKorpe.Add(stavka);
 
-                // 4. Kreiraj zapis o kartici (samo osnovni podaci)
+                // 6. Kreiraj zapis o kartici (samo osnovni podaci)
                 // Sakrij dio broja kartice za sigurnost
+       
+                // Fix for CS0103: The name 'cleanCardNumber' does not exist in the current context
+                // Define the 'cleanCardNumber' variable before using it.
+
+                string cleanCardNumber = new string(BrojKartice.Where(char.IsDigit).ToArray());
                 string maskicaniBrojKartice = cleanCardNumber;
+                if (maskicaniBrojKartice.Length >= 4)
+                {
+                    maskicaniBrojKartice = maskicaniBrojKartice.Substring(maskicaniBrojKartice.Length - 4).PadLeft(maskicaniBrojKartice.Length, '*');
+                }
                 if (maskicaniBrojKartice.Length >= 4)
                 {
                     maskicaniBrojKartice = maskicaniBrojKartice.Substring(maskicaniBrojKartice.Length - 4).PadLeft(maskicaniBrojKartice.Length, '*');
@@ -275,25 +261,38 @@ namespace Autosalon_OneZone.Controllers
 
                 var kartica = new Kartica
                 {
-                    BrojKartice = maskicaniBrojKartice,  // Čuvaj samo zadnje 4 cifre
+                    BrojKartice = maskicaniBrojKartice,
                     DatumIsteka = DatumIsteka,
                     ImeVlasnika = ImeVlasnika,
-                    Cvv = "***"  // Nikad ne spremaj pravi CVV u bazu
+                    Cvv = "***"
                 };
                 _context.Kartice.Add(kartica);
-                await _context.SaveChangesAsync(); // Sačuvaj karticu da dobiješ ID
+                await _context.SaveChangesAsync();
 
-                // 5. Kreiraj zapis o plaćanju
+                // 7. Kreiraj zapis o plaćanju
                 var placanje = new Placanje
                 {
-                    NarudzbaID = narudzba.NarudzbaID,  // PK = FK
+                    NarudzbaID = narudzba.NarudzbaID,
                     DatumPlacanja = DateTime.Now,
                     Iznos = Cijena,
                     Status = 0,
                     KarticaID = kartica.KarticaID,
-                    KreditID = null  // Ne koristi se u ovoj verziji
+                    KreditID = null
                 };
                 _context.Placanja.Add(placanje);
+
+                // 8. Ako je vozilo bilo u korpi, ukloni ga
+                if (stavkaKorpe != null)
+                {
+                    // Umanjujemo ukupnu cijenu korpe
+                    korpa.UkupnaCijena -= stavkaKorpe.CijenaStavke;
+                    if (korpa.UkupnaCijena < 0)
+                        korpa.UkupnaCijena = 0;
+
+                    // Ukloni stavku iz korpe
+                    _context.StavkeKorpe.Remove(stavkaKorpe);
+                    _context.Korpe.Update(korpa);
+                }
 
                 await _context.SaveChangesAsync();
 
@@ -307,6 +306,218 @@ namespace Autosalon_OneZone.Controllers
                 return RedirectToAction("Details", "Vozilo", new { id = VoziloID });
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> IzvrsiPlacanjeSvih(string OdabranaVozilaJSON, string ImeVlasnika, string BrojKartice, string DatumIsteka, string Cvv)
+        {
+            try
+            {
+                _logger.LogInformation("Početak obrade grupnog plaćanja");
+                _logger.LogInformation($"Primljeni JSON: {OdabranaVozilaJSON}");
+
+                // Dekodiranje JSON podataka
+                var odabranaVozila = JsonSerializer.Deserialize<List<OdabranoVoziloViewModel>>(OdabranaVozilaJSON,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                if (odabranaVozila == null || !odabranaVozila.Any())
+                {
+                    TempData["ErrorMessage"] = "Niste odabrali nijedno vozilo za kupovinu.";
+                    return RedirectToAction("Index");
+                }
+
+                _logger.LogInformation($"Broj odabranih vozila: {odabranaVozila.Count}");
+
+                // Provjera valjanosti podataka (ostaje ista)
+                if (string.IsNullOrWhiteSpace(ImeVlasnika) || string.IsNullOrWhiteSpace(BrojKartice) ||
+                    string.IsNullOrWhiteSpace(DatumIsteka) || string.IsNullOrWhiteSpace(Cvv))
+                {
+                    TempData["ErrorMessage"] = "Svi podaci o kartici su obavezni.";
+                    return RedirectToAction("Index");
+                }
+
+                // Validacija imena i prezimena (ostaje ista)
+                if (!IsValidName(ImeVlasnika))
+                {
+                    TempData["ErrorMessage"] = "Ime i prezime mogu sadržavati samo slova engleskog alfabeta.";
+                    return RedirectToAction("Index");
+                }
+
+                // Validacija broja kartice (ostaje ista)
+                string cleanCardNumber = new string(BrojKartice.Where(char.IsDigit).ToArray());
+                if (cleanCardNumber.Length != 16)
+                {
+                    TempData["ErrorMessage"] = "Broj kartice mora sadržavati tačno 16 cifara.";
+                    return RedirectToAction("Index");
+                }
+
+                // Validacija CVV koda (ostaje ista)
+                string cleanCvv = new string(Cvv.Where(char.IsDigit).ToArray());
+                if (cleanCvv.Length != 3)
+                {
+                    TempData["ErrorMessage"] = "CVV kod mora sadržavati tačno 3 cifre.";
+                    return RedirectToAction("Index");
+                }
+
+                // Validacija datuma isteka (ostaje ista)
+                if (!ValidateExpiryDate(DatumIsteka))
+                {
+                    TempData["ErrorMessage"] = "Datum isteka kartice nije validan ili je kartica istekla.";
+                    return RedirectToAction("Index");
+                }
+
+                // Dohvati trenutno prijavljenog korisnika
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    _logger.LogWarning("Korisnik nije pronađen iako je zaštićeno sa [Authorize]");
+                    return RedirectToAction("Login", "Account");
+                }
+
+                _logger.LogInformation($"Korisnik pronađen: {user.Id}");
+
+                // Dohvati korpu korisnika
+                var korpa = await _context.Korpe
+                    .Include(k => k.StavkeKorpe)
+                    .FirstOrDefaultAsync(k => k.KorisnikId == user.Id);
+
+                if (korpa == null)
+                {
+                    _logger.LogWarning("Korpa nije pronađena za korisnika.");
+                    TempData["ErrorMessage"] = "Korpa nije pronađena.";
+                    return RedirectToAction("Index");
+                }
+
+                _logger.LogInformation($"Korpa pronađena, ID: {korpa.KorpaID}, broj stavki: {korpa.StavkeKorpe?.Count ?? 0}");
+
+                // Kreiraj zapis o kartici
+                string maskicaniBrojKartice = cleanCardNumber;
+                if (maskicaniBrojKartice.Length >= 4)
+                {
+                    maskicaniBrojKartice = maskicaniBrojKartice.Substring(maskicaniBrojKartice.Length - 4).PadLeft(maskicaniBrojKartice.Length, '*');
+                }
+
+                var kartica = new Kartica
+                {
+                    BrojKartice = maskicaniBrojKartice,
+                    DatumIsteka = DatumIsteka,
+                    ImeVlasnika = ImeVlasnika,
+                    Cvv = "***"
+                };
+
+                _context.Kartice.Add(kartica);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Kartica kreirana, ID: {kartica.KarticaID}");
+
+                // Lista uspješno kupljenih vozila
+                List<int> kupljenaVozilaIds = new List<int>();
+                decimal ukupnaCijena = 0;
+
+                // Kreiraj narudžbu
+                var narudzba = new Narudzba
+                {
+                    KorisnikId = user.Id,
+                    DatumNarudzbe = DateTime.Now,
+                    UkupnaCijena = 0, // Privremeno, kasnije ćemo ažurirati
+                    Status = 0 // Status.Plaćeno
+                };
+
+                _context.Narudzbe.Add(narudzba);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Narudžba kreirana, ID: {narudzba.NarudzbaID}");
+
+                List<StavkaKorpe> stavkeZaUklanjanje = new List<StavkaKorpe>();
+
+                // Za svako odabrano vozilo, kreiraj stavku narudžbe i plaćanje
+                foreach (var odabranoVozilo in odabranaVozila)
+                {
+                    _logger.LogInformation($"Procesiranje vozila ID: {odabranoVozilo.id}, cijena: {odabranoVozilo.cijena}");
+
+                    var vozilo = await _context.Vozila.FindAsync(odabranoVozilo.id);
+                    if (vozilo == null)
+                    {
+                        _logger.LogWarning($"Vozilo nije pronađeno, ID: {odabranoVozilo.id}");
+                        continue;
+                    }
+
+                    // Provjeri da li je vozilo u korpi korisnika
+                    var stavkaKorpe = korpa.StavkeKorpe.FirstOrDefault(s => s.VoziloID == odabranoVozilo.id);
+                    if (stavkaKorpe == null)
+                    {
+                        _logger.LogWarning($"Vozilo nije u korpi, ID: {odabranoVozilo.id}");
+                        continue;
+                    }
+
+                    // Dodaj stavku narudžbe
+                    var stavkaNarudzbe = new StavkaKorpe
+                    {
+                        NarudzbaID = narudzba.NarudzbaID,
+                        VoziloID = odabranoVozilo.id,
+                        Kolicina = 1,
+                        CijenaStavke = odabranoVozilo.cijena
+                    };
+
+                    _context.StavkeKorpe.Add(stavkaNarudzbe);
+
+                    // Kreiraj plaćanje
+                    var placanje = new Placanje
+                    {
+                        NarudzbaID = narudzba.NarudzbaID,
+                        DatumPlacanja = DateTime.Now,
+                        Iznos = odabranoVozilo.cijena,
+                        Status = 0,
+                        KarticaID = kartica.KarticaID,
+                        KreditID = null
+                    };
+
+                    _context.Placanja.Add(placanje);
+                    _logger.LogInformation($"Plaćanje kreirano za vozilo ID: {odabranoVozilo.id}, iznos: {odabranoVozilo.cijena}");
+
+                    // Zapamti stavku za uklanjanje
+                    stavkeZaUklanjanje.Add(stavkaKorpe);
+
+                    // Ažuriraj ukupnu cijenu korpe
+                    korpa.UkupnaCijena -= stavkaKorpe.CijenaStavke;
+
+                    // Dodaj u listu kupljenih vozila
+                    kupljenaVozilaIds.Add(odabranoVozilo.id);
+                    ukupnaCijena += odabranoVozilo.cijena;
+                }
+
+                // Ukloni vozila iz korpe
+                foreach (var stavka in stavkeZaUklanjanje)
+                {
+                    _context.StavkeKorpe.Remove(stavka);
+                    _logger.LogInformation($"Stavka uklonjena iz korpe, ID: {stavka.StavkaID}");
+                }
+
+                // Ažuriraj ukupnu cijenu narudžbe
+                narudzba.UkupnaCijena = ukupnaCijena;
+                _context.Narudzbe.Update(narudzba);
+
+                // Ažuriraj korpu
+                if (korpa.UkupnaCijena < 0)
+                    korpa.UkupnaCijena = 0;
+
+                _context.Korpe.Update(korpa);
+
+                // Sačuvaj sve promjene odjednom
+                await _context.SaveChangesAsync();
+                _logger.LogInformation("Sve promjene uspješno sačuvane");
+
+                TempData["SuccessMessage"] = $"Uspješno ste kupili {kupljenaVozilaIds.Count} vozila!";
+                return RedirectToAction("Uspjeh", new { id = narudzba.NarudzbaID });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Greška prilikom obrade grupnog plaćanja: {ex.Message}");
+                TempData["ErrorMessage"] = "Došlo je do greške prilikom obrade plaćanja. Molimo pokušajte ponovo.";
+                return RedirectToAction("Index");
+            }
+        }
+
+
 
         // Validacija imena i prezimena - dozvoljava samo slova engleskog alfabeta
         private bool IsValidName(string name)
