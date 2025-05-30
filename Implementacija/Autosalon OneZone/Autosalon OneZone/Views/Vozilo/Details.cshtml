@@ -7,12 +7,7 @@
 }
 
 <div class="container mt-4">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/Vozilo">Vozila</a></li>
-            <li class="breadcrumb-item active">@Model.Marka @Model.Model</li>
-        </ol>
-    </nav>
+    
 
     <div class="row">
         <!-- Lijeva strana - Detalji vozila -->
@@ -136,7 +131,8 @@
     <!-- Sekcija za recenzije -->
     <div class="row mt-5">
         <div class="col-12">
-            <h3 class="mb-4">Recenzije korisnika</h3>
+            <h3 class="mb-4" style="padding-left: 25px;">Recenzije korisnika</h3>
+
 
             @if (Model.Recenzije != null && Model.Recenzije.Any())
             {
@@ -158,7 +154,18 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="card-text">@recenzija.Komentar</p>
+                                @{
+                                    var komentarText = recenzija.Komentar ?? "";
+                                    var skraceniKomentar = komentarText;
+                                    bool isDugacak = komentarText.Length > 100;
+                                    if (isDugacak)
+                                    {
+                                        skraceniKomentar = komentarText.Substring(0, 100) + "...";
+                                    }
+                                }
+                                <a href="#" class="view-komentar-recenzije" data-komentar="@System.Net.WebUtility.HtmlEncode(komentarText)">
+                                    <p class="card-text @(isDugacak ? "truncated-text" : "")">@skraceniKomentar</p>
+                                </a>
                             </div>
                         </div>
                     }
@@ -178,6 +185,24 @@
                     }
                 </div>
             }
+        </div>
+    </div>
+</div>
+
+<!-- Modal za prikaz cijelog komentara recenzije -->
+<div class="modal fade" id="komentarRecenzijeModal" tabindex="-1" aria-labelledby="komentarRecenzijeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="komentarRecenzijeModalLabel">Komentar recenzije</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="komentarRecenzijeModalText"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+            </div>
         </div>
     </div>
 </div>
@@ -291,6 +316,14 @@
 
             // NOVA VALIDACIJA ZA FORMU PLAĆANJA
             setupPaymentFormValidation();
+
+            // Klik na komentar recenzije - prikazuje modal s punim tekstom
+            $(".view-komentar-recenzije").on("click", function(e) {
+                e.preventDefault();
+                const komentar = $(this).data("komentar");
+                $("#komentarRecenzijeModalText").text(decodeURIComponent(komentar));
+                $("#komentarRecenzijeModal").modal("show");
+            });
         });
 
         // Funkcija koja inicijalizira validaciju forme
@@ -503,8 +536,11 @@
         .reviews-container {
             max-height: 600px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-left: 25px;
+            width: 300px; /* Fixed width of 300px */
+            margin: 0 auto; /* Centers the container */
         }
+
 
         .bi-star-fill.text-warning {
             color: #ffc107 !important;
@@ -536,5 +572,25 @@
             .reviews-container::-webkit-scrollbar-thumb:hover {
                 background: #aaa;
             }
+
+        /* Stilovi za prikaz komentara recenzija */
+        .truncated-text {
+            cursor: pointer;
+        }
+
+        .view-komentar-recenzije {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+            .view-komentar-recenzije:hover {
+                text-decoration: none;
+            }
+
+                .view-komentar-recenzije:hover p {
+                    color: #007bff;
+                }
     </style>
 }
+
