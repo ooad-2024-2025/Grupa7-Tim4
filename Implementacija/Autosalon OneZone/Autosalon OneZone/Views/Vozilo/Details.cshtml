@@ -1,5 +1,6 @@
 ﻿@model Autosalon_OneZone.Models.Vozilo
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
 @{
     ViewData["Title"] = $"{Model.Marka} {Model.Model}";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -129,6 +130,54 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Sekcija za recenzije -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mb-4">Recenzije korisnika</h3>
+
+            @if (Model.Recenzije != null && Model.Recenzije.Any())
+            {
+                <div class="reviews-container">
+                    @foreach (var recenzija in Model.Recenzije)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-0">@recenzija.Korisnik.Ime @recenzija.Korisnik.Prezime</h5>
+                                </div>
+                                <div>
+                                    <span class="me-2">Ocjena: </span>
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <i class="bi @(i <= recenzija.Ocjena ? "bi-star-fill text-warning" : "bi-star")"></i>
+                                    }
+                                    <span class="ms-2 text-muted small">@recenzija.DatumRecenzije.ToString("dd.MM.yyyy")</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">@recenzija.Komentar</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <p>Trenutno nema recenzija za ovo vozilo.</p>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <p>Kupite ovo vozilo da biste mogli dodati recenziju!</p>
+                    }
+                    else
+                    {
+                        <p>Prijavite se da biste mogli kupiti i recenzirati ovo vozilo!</p>
+                    }
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -449,6 +498,43 @@
         ::placeholder {
             opacity: 0.6;
         }
+
+        /* Stilovi za recenzije */
+        .reviews-container {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .bi-star-fill.text-warning {
+            color: #ffc107 !important;
+        }
+
+        .bi-star {
+            color: #ccc;
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        /* Stilizacija scrollbara za recenzije */
+        .reviews-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .reviews-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .reviews-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+            .reviews-container::-webkit-scrollbar-thumb:hover {
+                background: #aaa;
+            }
     </style>
 }
-

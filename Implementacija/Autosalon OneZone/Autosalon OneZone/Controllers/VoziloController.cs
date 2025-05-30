@@ -27,8 +27,10 @@ namespace Autosalon_OneZone.Controllers
         // GET: /Vozilo/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            // Dohvati vozilo iz baze podataka
+            // Dohvati vozilo iz baze podataka zajedno sa recenzijama i korisnicima
             var vozilo = await _context.Vozila
+                .Include(v => v.Recenzije)
+                    .ThenInclude(r => r.Korisnik)
                 .FirstOrDefaultAsync(m => m.VoziloID == id);
 
             if (vozilo == null)
@@ -36,8 +38,15 @@ namespace Autosalon_OneZone.Controllers
                 return NotFound();
             }
 
+            // Order reviews by date (newest first)
+            if (vozilo.Recenzije != null)
+            {
+                vozilo.Recenzije = vozilo.Recenzije.OrderByDescending(r => r.DatumRecenzije).ToList();
+            }
+
             return View(vozilo);
         }
+
 
         // GET: /Vozilo/Index
         // PUT THIS NEW ACTION IN VoziloController.cs
