@@ -1,5 +1,5 @@
 ﻿// Controllers/KorpaController.cs
-using Autosalon_OneZone.Helpers;
+using Autosalon_OneZone.Data.Helpers;
 using Autosalon_OneZone.Models;
 using Autosalon_OneZone.Data;
 using Microsoft.AspNetCore.Mvc;
