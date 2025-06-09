@@ -15,6 +15,8 @@ This is an ASP.NET Core MVC web application designed for managing a modern car d
 
 - **Website Link:** [http://smarter4188-001-site1.otempurl.com/](http://smarter4188-001-site1.otempurl.com/)
 
+**Temporary URL Login Credentials (for preventing abuse/phishing by the hosting provider):**
+
 You will need these credentials to access the site when the browser's sign-in prompt appears.
 
 - **Username:** 11248538
