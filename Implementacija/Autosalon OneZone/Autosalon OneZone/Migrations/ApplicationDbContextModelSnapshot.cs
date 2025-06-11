@@ -537,7 +537,7 @@ namespace Autosalon_OneZone.Migrations
                     b.HasOne("Autosalon_OneZone.Models.ApplicationUser", "Korisnik")
                         .WithMany("Narudzbe")
                         .HasForeignKey("KorisnikId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Korisnik");
@@ -573,7 +573,7 @@ namespace Autosalon_OneZone.Migrations
                     b.HasOne("Autosalon_OneZone.Models.ApplicationUser", "Korisnik")
                         .WithMany("PodrskaUpiti")
                         .HasForeignKey("KorisnikId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Korisnik");
@@ -608,12 +608,12 @@ namespace Autosalon_OneZone.Migrations
                     b.HasOne("Autosalon_OneZone.Models.Narudzba", "Narudzba")
                         .WithMany("StavkeKorpe")
                         .HasForeignKey("NarudzbaID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Autosalon_OneZone.Models.Vozilo", "Vozilo")
                         .WithMany("StavkeKorpe")
                         .HasForeignKey("VoziloID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Korpa");
